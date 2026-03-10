@@ -5,7 +5,7 @@ title: Home
 [Apps - ](/apps.html)
 [About - ](/about.html)
 [Contact - ](/contact.html)
-[Privacy Policy](/privacy.html)
+[Privacy Policy - ](/privacy.html)
 [Terms](/terms.html)
 
 <h1>Home</h1>
