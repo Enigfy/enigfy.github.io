@@ -6,6 +6,7 @@ title: Privacy Policy
 [About - ](/about.html)
 [Contact - ](/contact.html)
 [Privacy Policy](/privacy-policy.html)
+[Terms](/terms.html)
 
 <h1>Privacy Policy</h1>
   <p><strong>Effective Date: March 06, 2026</strong></p>
