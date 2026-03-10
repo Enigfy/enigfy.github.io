@@ -5,7 +5,7 @@ title: Apps
 [Apps - ](/apps.html)
 [About - ](/about.html)
 [Contact - ](/contact.html)
-[Privacy Policy - ](/privacy-policy.html)
+[Privacy Policy - ](/privacy.html)
 [Terms](/terms.html)
 
 <h1>Apps</h1>
