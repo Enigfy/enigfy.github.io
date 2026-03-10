@@ -6,6 +6,7 @@ title: Home
 [About - ](/about.html)
 [Contact - ](/contact.html)
 [Privacy Policy](/privacy.html)
+[Terms](/terms.html)
 
 <h1>Home</h1>
 
