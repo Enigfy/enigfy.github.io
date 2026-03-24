@@ -9,146 +9,111 @@ title: Privacy Policy
 [Terms](/terms.html)
 
 <h1>Privacy Policy</h1>
-  <p><strong>Effective Date: March 06, 2026</strong></p>
+<p><strong>Effective Date: March 24, 2026 &nbsp;·&nbsp; App: Marienbad &nbsp;·&nbsp; Publisher: Enigfy</strong></p>
 
-  <p>At AppDev Studios ("we," "our," or "us"), we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website at appdevstudios.com (the "Website") or use our mobile applications available on the Apple App Store (collectively, the "Apps"). This policy applies to all visitors, users, and others who access the Website or Apps (collectively, the "Services").</p>
+<hr>
 
-  <p>By using our Services, you agree to the collection and use of information in accordance with this Privacy Policy. If you do not agree with the terms of this Privacy Policy, please do not access or use our Services.</p>
+<h2>1. Introduction</h2>
+<p>Marienbad ("the App") is a strategy game developed and published by Enigfy ("we," "our," or "us"). This Privacy Policy explains what information the App collects, how it is used, and your rights as a user.</p>
+<p>We take your privacy seriously. Marienbad is designed to work entirely on your device — it does not collect personal data or send any information to external servers.</p>
 
-  <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Effective Date" at the top. You are advised to review this Privacy Policy periodically for any changes.</p>
+<hr>
 
-  <hr>
+<h2>2. Who We Are</h2>
+<ul>
+  <li><strong>Developer / Publisher:</strong> Victor Gerweck, operating under the brand Enigfy</li>
+  <li><strong>Website:</strong> <a href="https://enigfy.com">https://enigfy.com</a></li>
+  <li><strong>Contact:</strong> <a href="mailto:privacy@enigfy.com">privacy@enigfy.com</a></li>
+</ul>
 
-  <h2>1. Information We Collect</h2>
+<hr>
 
-  <p>We collect information that identifies, relates to, describes, or is capable of being associated with a particular individual ("Personal Information"), as well as other non-personal information. The types of information we collect depend on how you interact with our Services.</p>
+<h2>3. What Data the App Collects</h2>
+<p>Marienbad does not collect, transmit, or share any personal data.</p>
 
-  <h3>1.1 Personal Information You Provide to Us</h3>
-  <p>We may collect the following Personal Information that you voluntarily provide:</p>
-  <ul>
-    <li><strong>Contact Information:</strong> Name, email address, postal address, phone number, or other similar identifiers when you register for an account, subscribe to newsletters, contact us via forms, or request support.</li>
-    <li><strong>Account Information:</strong> Username, password, and other credentials if you create an account on our Website or in our Apps.</li>
-    <li><strong>Payment Information:</strong> Billing details, such as credit card number, expiration date, and billing address, processed through third-party payment processors (we do not store full payment details directly).</li>
-    <li><strong>User Content:</strong> Any information you submit, such as feedback, reviews, comments, or content uploaded to our Apps (e.g., photos, videos, or text if applicable to the App's functionality).</li>
-    <li><strong>Support Requests:</strong> Information provided when seeking technical support or reporting issues.</li>
-  </ul>
+<h3>3.1 Data stored locally on your device</h3>
+<p>The following information is saved on your device only, using Apple's standard UserDefaults storage. It is never transmitted to us or any third party:</p>
+<ul>
+  <li>Game preferences (sound on/off, preferred starter player, display settings)</li>
+  <li>Game history (win/loss records and move counts for up to 100 recent games)</li>
+  <li>Pro upgrade status (whether you have purchased the Pro unlock)</li>
+  <li>Tutorial and guided-game completion flags</li>
+  <li>Upgrade cooldown timer (a timestamp used to enforce the free-mode cooldown period)</li>
+</ul>
+<p>This data is automatically included in your iOS device backups (iCloud or local) under Apple's standard backup policies, which you control in your iOS Settings.</p>
 
-  <h3>1.2 Information Automatically Collected</h3>
-  <p>When you use our Services, we may automatically collect:</p>
-  <ul>
-    <li><strong>Usage Data:</strong> Details about your interactions, such as pages visited, time spent on pages, links clicked, search queries, and app usage patterns (e.g., features accessed, session duration).</li>
-    <li><strong>Device Information:</strong> Device type, operating system, unique device identifiers (e.g., IDFA for iOS devices), IP address, browser type, mobile network information, and app version.</li>
-    <li><strong>Location Data:</strong> If you enable location services in our Apps, we may collect precise or approximate location data to provide location-based features. We only collect this with your explicit consent.</li>
-    <li><strong>Log Data:</strong> Error logs, crash reports, and diagnostic data to improve our Services.</li>
-    <li><strong>Cookies and Similar Technologies:</strong> We use cookies, web beacons, pixels, and similar tracking technologies on our Website to recognize you, remember preferences, and analyze trends. For Apps, we may use SDKs for analytics and advertising.</li>
-  </ul>
+<h3>3.2 Data we do not collect</h3>
+<p>Marienbad does not collect or process any of the following:</p>
+<ul>
+  <li>Your name, email address, or any contact information</li>
+  <li>Your location</li>
+  <li>Device identifiers or advertising identifiers (IDFA)</li>
+  <li>Usage analytics or crash reports — no analytics SDK is included in the App</li>
+  <li>Health data, contacts, photos, camera, or microphone access</li>
+  <li>Any information from other apps or websites</li>
+</ul>
 
-  <h3>1.3 Information from Third Parties</h3>
-  <p>We may receive information about you from third-party sources, such as:</p>
-  <ul>
-    <li>Analytics providers (e.g., Google Analytics) for usage statistics.</li>
-    <li>Advertising partners for targeted ads.</li>
-    <li>Social media platforms if you log in via social accounts.</li>
-    <li>App Store data, such as download history or purchase details, provided by Apple.</li>
-  </ul>
+<hr>
 
-  <p>We do not collect sensitive information such as health data, financial details (beyond payments), or biometric data unless explicitly required for an App's core functionality and with your consent.</p>
-  <p>If our Apps integrate third-party SDKs (e.g., for analytics or ads), those third parties may collect data independently. We ensure they provide equivalent privacy protections as outlined here.</p>
+<h2>4. In-App Purchases (Pro Upgrade)</h2>
+<p>Marienbad offers a one-time optional Pro upgrade via Apple's StoreKit framework. All payment processing is handled entirely by Apple through the App Store. Enigfy does not receive, process, or store any payment card details or billing information.</p>
+<p>When you complete a purchase or restore a previous one, Apple passes a verified transaction receipt to the App. The App reads this receipt solely to confirm whether the Pro unlock is active, and stores only a simple "unlocked: yes/no" flag on your device. No transaction identifiers or Apple ID information are retained by the App.</p>
+<p>For information on how Apple handles payment data, please refer to <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</p>
 
-  <hr>
+<hr>
 
-  <h2>2. How We Collect Information</h2>
-  <ul>
-    <li><strong>Directly from You:</strong> Through forms, registrations, or interactions.</li>
-    <li><strong>Automatically:</strong> Via cookies, SDKs, and server logs.</li>
-    <li><strong>From Third Parties:</strong> As described above.</li>
-    <li><strong>App Permissions:</strong> For Apps, we request permissions (e.g., camera, microphone, contacts) only when necessary for features. You can manage these in your device settings.</li>
-  </ul>
-  <p>We comply with Apple's App Tracking Transparency framework. If we track you across apps and websites owned by other companies (e.g., for targeted advertising), we will request your permission via the ATT prompt.</p>
+<h2>5. Third-Party Services and SDKs</h2>
+<p>Marienbad does not integrate any third-party analytics, advertising, crash reporting, or social networking SDKs. No data is shared with or transmitted to any third party by the App.</p>
+<p>The only third-party framework used is Apple's StoreKit, which is provided by Apple as part of iOS and governed by Apple's own privacy policy.</p>
 
-  <hr>
+<hr>
 
-  <h2>3. How We Use Your Information</h2>
-  <p>We use the information we collect for the following purposes:</p>
-  <ul>
-    <li><strong>To Provide and Maintain Services:</strong> Operate the Website and Apps, process transactions, deliver content, and enable features.</li>
-    <li><strong>To Improve Services:</strong> Analyze usage to enhance functionality, fix bugs, and develop new features.</li>
-    <li><strong>To Communicate with You:</strong> Send emails about updates, newsletters, promotions, or support responses. You can opt out of marketing communications.</li>
-    <li><strong>For Personalization:</strong> Customize content, recommendations, and ads based on your preferences and behavior.</li>
-    <li><strong>For Analytics and Research:</strong> Understand user trends and measure effectiveness.</li>
-    <li><strong>For Security and Fraud Prevention:</strong> Detect and prevent unauthorized access, abuse, or malicious activity.</li>
-    <li><strong>To Comply with Legal Obligations:</strong> Respond to legal requests, enforce terms, or meet regulatory requirements.</li>
-    <li><strong>For Advertising:</strong> Display targeted ads within our Apps or on third-party platforms, subject to your consent where required.</li>
-  </ul>
-  <p>We only use data for the purposes described or compatible ones. We do not repurpose data without further consent.</p>
+<h2>6. Data Collected by the App Store</h2>
+<p>When you download, install, or make a purchase within Marienbad, Apple may collect certain information as part of operating the App Store (for example, purchase history associated with your Apple ID, or crash logs submitted via Apple's opt-in diagnostics programme). This data is collected and controlled by Apple, not by Enigfy. Please refer to <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a> for details.</p>
 
-  <hr>
+<hr>
 
-  <h2>4. Sharing Your Information</h2>
-  <p>We do not sell your Personal Information. We may share information as follows:</p>
-  <ul>
-    <li><strong>Service Providers:</strong> With vendors who assist us (e.g., hosting, analytics, payment processing, email delivery). They are contractually obligated to protect your data and use it only for the services they provide.</li>
-    <li><strong>Third-Party Partners:</strong> Analytics tools (e.g., Google Analytics), advertising networks, or SDK providers in our Apps. We require them to provide the same level of protection as this policy.</li>
-    <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets.</li>
-    <li><strong>Legal Requirements:</strong> If required by law, subpoena, or to protect rights, property, or safety.</li>
-    <li><strong>With Your Consent:</strong> For any other purpose with your explicit permission.</li>
-  </ul>
-  <p>For third-party AI integrations (if any), we will disclose sharing and obtain explicit permission before sharing personal data. We may share aggregated or anonymized data that cannot identify you.</p>
+<h2>7. Children's Privacy</h2>
+<p>Marienbad does not knowingly collect any information from children under the age of 13 (or the applicable age of digital consent in your jurisdiction). Because the App collects no personal data at all, it is suitable for all ages. Parental controls and family-sharing settings are managed through Apple's Screen Time and Family Sharing features in iOS Settings.</p>
 
-  <hr>
+<hr>
 
-  <h2>5. Data Security</h2>
-  <p>We implement reasonable administrative, technical, and physical safeguards to protect your information from unauthorized access, loss, misuse, or alteration. However, no system is completely secure, and we cannot guarantee absolute security.</p>
+<h2>8. Data Retention and Deletion</h2>
+<p>All data stored by the App lives exclusively on your device and is entirely under your control. You can delete all App data at any time by:</p>
+<ul>
+  <li><strong>Deleting the App</strong> from your device (iOS Settings → General → iPhone Storage → Marienbad → Delete App). This removes all locally stored preferences and game history.</li>
+  <li><strong>Resetting individual preferences</strong> within the App's Settings screen.</li>
+</ul>
+<p>Because we do not hold any data on our servers, there is nothing for us to delete on our end upon request.</p>
 
-  <hr>
+<hr>
 
-  <h2>6. Data Retention</h2>
-  <p>We retain Personal Information only as long as necessary for the purposes outlined in this policy, or as required by law. For example:</p>
-  <ul>
-    <li>Account data is retained while your account is active and for a reasonable period after deletion.</li>
-    <li>Usage data may be kept for analytics for up to 24 months.</li>
-  </ul>
-  <p>When data is no longer needed, we securely delete or anonymize it.</p>
+<h2>9. Your Privacy Rights</h2>
+<p>Because Marienbad does not collect personal data, most data-subject rights (access, correction, portability, erasure) are satisfied automatically — the data that exists lives on your device and you control it entirely.</p>
+<p>If you have any questions or concerns about privacy, please contact us at <a href="mailto:privacy@enigfy.com">privacy@enigfy.com</a>. We will respond within 30 days.</p>
 
-  <hr>
+<hr>
 
-  <h2>7. Your Rights and Choices</h2>
-  <p>Depending on your location (e.g., under GDPR, CCPA/CPRA, or similar laws), you may have the following rights:</p>
-  <ul>
-    <li><strong>Access:</strong> Request details about your Personal Information.</li>
-    <li><strong>Correction:</strong> Update inaccurate data.</li>
-    <li><strong>Deletion:</strong> Request removal of your data (subject to legal exceptions).</li>
-    <li><strong>Opt-Out:</strong> From sales (though we do not sell data), targeted advertising, or profiling.</li>
-    <li><strong>Withdraw Consent:</strong> Revoke consent at any time, without affecting prior processing.</li>
-    <li><strong>Portability:</strong> Receive your data in a transferable format.</li>
-    <li><strong>Non-Discrimination:</strong> We will not discriminate against you for exercising rights.</li>
-  </ul>
-  <p>To exercise these rights, contact us at <a href="mailto:info@osches.com">info@osches.com</a>. We will respond within the legally required timeframe (e.g., 30–45 days).</p>
-  <p>For Apps: manage permissions in device settings, delete your account via in-app settings (which will also delete associated data), and opt out of tracking via ATT or device settings. For cookies on the Website, manage preferences via your browser settings.</p>
+<h2>10. International Users</h2>
+<p>Marienbad is available worldwide through the Apple App Store. Because no personal data is transmitted to us or stored on our servers, there is no cross-border data transfer from your device to Enigfy.</p>
+<p>Users in the European Economic Area (EEA), the United Kingdom, Switzerland, and other jurisdictions with data protection legislation are covered by this policy. Our legal basis for any local on-device processing is the performance of the contract between you and Enigfy (i.e., providing the App you downloaded).</p>
 
-  <hr>
+<hr>
 
-  <h2>8. Children's Privacy</h2>
-  <p>Our Services are not intended for children under 13 (or 16 in some jurisdictions). We do not knowingly collect Personal Information from children. If we learn we have collected such data, we will delete it. If you believe we have child data, please contact us.</p>
-  <p>For Apps in the Kids Category (if applicable), we comply with COPPA and do not include third-party analytics or ads.</p>
+<h2>11. Apple Privacy Manifest</h2>
+<p>In compliance with Apple's Privacy Manifest requirements (effective Spring 2024), Marienbad includes a <code>PrivacyInfo.xcprivacy</code> file that declares the App's use of Apple's UserDefaults API (category <code>NSPrivacyAccessedAPICategoryUserDefaults</code>, reason <code>CA92.1</code>). No data types are declared as collected because no personal data is collected.</p>
 
-  <hr>
+<hr>
 
-  <h2>9. International Data Transfers</h2>
-  <p>We are based in the United States. If you are outside this jurisdiction, your data may be transferred to and processed in countries with different data protection laws. We use safeguards like Standard Contractual Clauses to ensure adequate protection.</p>
+<h2>12. Changes to This Privacy Policy</h2>
+<p>We may update this Privacy Policy from time to time. When we do, we will revise the "Effective Date" at the top of this page. We encourage you to review this policy periodically. Continued use of the App after any changes constitutes acceptance of the updated policy.</p>
 
-  <hr>
+<hr>
 
-  <h2>10. Third-Party Links</h2>
-  <p>Our Services may contain links to third-party sites or services. We are not responsible for their privacy practices. Please review their policies before interacting.</p>
-
-  <hr>
-
-  <h2>11. Contact Us</h2>
-  <p>If you have questions about this Privacy Policy or our practices, please contact us at:</p>
-  <p>
-    <strong>Osches</strong><br>
-    Email: <a href="mailto:info@osches.com">info@osches.com</a><br>
-  </p>
-  <p>For California residents: You may contact us to request information about sharing with third parties for direct marketing (though we do not do this).</p>
-
+<h2>13. Contact Us</h2>
+<p>If you have any questions about this Privacy Policy or the App's data practices, please contact us:</p>
+<ul>
+  <li><strong>Email:</strong> <a href="mailto:privacy@enigfy.com">privacy@enigfy.com</a></li>
+  <li><strong>Website:</strong> <a href="https://enigfy.com">https://enigfy.com</a></li>
+  <li><strong>Developer:</strong> Victor Gerweck / Enigfy</li>
+</ul>
