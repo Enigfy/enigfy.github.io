@@ -1,1 +1,260 @@
+/* ── Enigfy · style.css ────────────────────────────────────────────────────
+   Single stylesheet shared by all pages.
+   Colours, typography, and layout defined once here.
+   ────────────────────────────────────────────────────────────────────────── */
 
+/* ── Fonts ─────────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ── Variables ──────────────────────────────────────────────────────────── */
+:root {
+  --bg:          #1a1a1a;
+  --bg-card:     #222222;
+  --bg-hover:    #272727;
+  --text:        rgba(255, 255, 255, 0.88);
+  --text-muted:  rgba(255, 255, 255, 0.40);
+  --text-dim:    rgba(255, 255, 255, 0.22);
+  --gold:        #c9a84c;
+  --gold-dim:    rgba(201, 168, 76, 0.55);
+  --gold-subtle: rgba(201, 168, 76, 0.12);
+  --border:      rgba(255, 255, 255, 0.08);
+  --radius:      6px;
+  --max-width:   680px;
+  --font-serif:  'Cormorant Garamond', Georgia, serif;
+  --font-sans:   'DM Sans', system-ui, sans-serif;
+}
+
+/* ── Reset ──────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Base ───────────────────────────────────────────────────────────────── */
+html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ── Layout ─────────────────────────────────────────────────────────────── */
+.page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 48px 28px 80px;
+}
+
+/* ── Site header ────────────────────────────────────────────────────────── */
+.site-header {
+  text-align: center;
+  padding-bottom: 32px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.site-title {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: 2.6rem;
+  letter-spacing: 0.12em;
+  color: var(--text);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.site-title:hover { color: var(--gold); }
+
+/* ── Navigation ─────────────────────────────────────────────────────────── */
+nav {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+nav a {
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: var(--radius);
+  transition: color 0.2s, background 0.2s;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--gold);
+  background: var(--gold-subtle);
+}
+
+/* ── Divider ────────────────────────────────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border), transparent);
+  margin: 28px 0;
+}
+
+/* ── App card (used on home page) ───────────────────────────────────────── */
+.app-card {
+  padding: 24px 0 20px;
+}
+
+.app-card + .app-card {
+  border-top: 1px solid var(--border);
+}
+
+.app-name {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.7rem;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.app-tagline {
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.app-status {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border: 1px solid var(--text-dim);
+  border-radius: 20px;
+  padding: 2px 10px;
+  margin-bottom: 14px;
+}
+
+.app-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.app-links a {
+  font-size: 0.82rem;
+  color: var(--gold-dim);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.app-links a:hover {
+  color: var(--gold);
+  border-bottom-color: var(--gold-dim);
+}
+
+/* ── Page title ─────────────────────────────────────────────────────────── */
+.page-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 2rem;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.page-meta {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+}
+
+/* ── Prose (legal / about pages) ───────────────────────────────────────── */
+.prose h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.25rem;
+  color: var(--text);
+  margin: 36px 0 10px;
+}
+
+.prose h3 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin: 24px 0 8px;
+  text-transform: uppercase;
+}
+
+.prose p {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.72);
+  margin-bottom: 14px;
+}
+
+.prose ul {
+  padding-left: 20px;
+  margin-bottom: 14px;
+}
+
+.prose li {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.72);
+  margin-bottom: 6px;
+}
+
+.prose a {
+  color: var(--gold-dim);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.prose a:hover {
+  color: var(--gold);
+  border-bottom-color: var(--gold-dim);
+}
+
+.prose code {
+  font-size: 0.82rem;
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px;
+  padding: 1px 5px;
+  color: var(--text-muted);
+}
+
+.prose strong {
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* ── Footer ─────────────────────────────────────────────────────────────── */
+footer {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  font-size: 0.76rem;
+  color: var(--text-dim);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+footer a {
+  color: var(--text-dim);
+  text-decoration: none;
+}
+
+footer a:hover { color: var(--gold-dim); }
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .page { padding: 32px 20px 60px; }
+  .site-title { font-size: 2rem; }
+  .page-title { font-size: 1.6rem; }
+  .app-name   { font-size: 1.4rem; }
+}
