@@ -111,6 +111,10 @@ nav a.active {
   padding: 24px 0 20px;
 }
 
+.app-card:first-of-type {
+  padding-top: 0;
+}
+
 .app-card + .app-card {
   border-top: 1px solid var(--border);
 }
@@ -161,10 +165,6 @@ nav a.active {
 .app-links a:hover {
   color: var(--gold);
   border-bottom-color: var(--gold-dim);
-}
-
-.app-card:first-of-type {
-  padding-top: 0;
 }
 
 /* ── Page title ─────────────────────────────────────────────────────────── */
