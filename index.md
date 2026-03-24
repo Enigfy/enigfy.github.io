@@ -6,26 +6,26 @@ title: Home
 [Contact - ](/contact.html)
 [Terms](/terms.html)
 
-<hr style="border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 24px 0;">
+ <div style="height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent); margin: 24px 0;"></div>
 
 <h1>Marienbad</h1>
 
-  <p><strong>A strategic iOS game based on misère Nim</strong></p>
-  [Privacy Policy Marienbad](/privacy-marienbad.html)
+<p><strong>A strategic iOS game based on misère Nim</strong></p>
+[Privacy Policy Marienbad](/privacy-marienbad.html)
 
-<hr style="border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 24px 0;">
+ <div style="height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent); margin: 24px 0;"></div>
 
 <h1>Monaco</h1>
 
-  <p><strong>In preparation</strong></p>
-
-<hr style="border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 24px 0;">
+<p><strong>In preparation</strong></p>
+  
+<div style="height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent); margin: 24px 0;"></div>
 
 <h1>Multiply</h1>
 
-  <p><strong>In preparation</strong></p>
+<p><strong>In preparation</strong></p>
 
-  <p>Description</p>
-
-<hr style="border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 24px 0;">
+<p>Description</p>
+  
+<div style="height: 1px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent); margin: 24px 0;"></div>
   
