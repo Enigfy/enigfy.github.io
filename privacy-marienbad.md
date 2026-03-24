@@ -111,7 +111,7 @@ title: Privacy Policy
 <h2>13. Contact Us</h2>
 <p>If you have any questions about this Privacy Policy or the App's data practices, please contact us:</p>
 <ul>
-  <li><strong>Email:</strong> <a href="mailto:privacy@enigfy.com">privacy@enigfy.com</a></li>
+  <li><strong>Email:</strong> <a href="mailto:info@enigfy.com">info@enigfy.com</a></li>
   <li><strong>Website:</strong> <a href="https://enigfy.com">https://enigfy.com</a></li>
   <li><strong>Developer:</strong>Enigfy</li>
 </ul>
