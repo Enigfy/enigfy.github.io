@@ -50,8 +50,15 @@ body {
 .site-header {
   text-align: center;
   padding-bottom: 32px;
-  margin-bottom: 32px;
-  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+}
+
+.site-header::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
+  margin: 28px 0 32px;
 }
 
 .site-title {
