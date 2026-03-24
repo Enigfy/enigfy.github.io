@@ -23,7 +23,7 @@ title: Privacy Policy
 <ul>
   <li><strong>Developer / Publisher:</strong> Victor Gerweck, operating under the brand Enigfy</li>
   <li><strong>Website:</strong> <a href="https://enigfy.com">https://enigfy.com</a></li>
-  <li><strong>Contact:</strong> <a href="mailto:privacy@enigfy.com">privacy@enigfy.com</a></li>
+  <li><strong>Contact:</strong> <a href="mailto:info@enigfy.com">info@enigfy.com</a></li>
 </ul>
 
 <hr>
