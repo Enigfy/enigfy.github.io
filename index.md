@@ -10,7 +10,7 @@ title: Home
 <h1>Marienbad</h1>
 
   <p><strong>A strategic iOS game based on misère Nim</strong></p>
-  [Privacy Policy Marienbad - ](/privacy-marienbad.html)
+  [Privacy Policy Marienbad](/privacy-marienbad.html)
 
 <h1>Monaco</h1>
 
