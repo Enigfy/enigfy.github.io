@@ -8,20 +8,26 @@
 
 /* ── Variables ──────────────────────────────────────────────────────────── */
 :root {
-  --bg:          #1a1a1a;
-  --bg-card:     #222222;
-  --bg-hover:    #272727;
-  --text:        rgba(255, 255, 255, 0.88);
-  --text-muted:  rgba(255, 255, 255, 0.40);
-  --text-dim:    rgba(255, 255, 255, 0.22);
-  --gold:        #c9a84c;
-  --gold-dim:    rgba(201, 168, 76, 0.55);
+  --bg: #1a1a1a;
+  --bg-card: #222222;
+  --bg-hover: #272727;
+  --text: rgba(255, 255, 255, 0.88);
+  --text-muted: rgba(255, 255, 255, 0.40);
+  --text-dim: rgba(255, 255, 255, 0.22);
+  --gold: #c9a84c;
+  --gold-dim: rgba(201, 168, 76, 0.55);
   --gold-subtle: rgba(201, 168, 76, 0.12);
-  --border:      rgba(255, 255, 255, 0.08);
-  --radius:      6px;
-  --max-width:   680px;
-  --font-serif:  'Cormorant Garamond', Georgia, serif;
-  --font-sans:   'DM Sans', system-ui, sans-serif;
+  --border: rgba(255, 255, 255, 0.08);
+  --radius: 6px;
+  --max-width: 680px;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  
+  /* Red dot variables – easy to tweak */
+  --dot-color: #e63939;
+  --dot-size: 16px;
+  --dot-top: -6px;
+  --dot-right: -10px;
 }
 
 /* ── Reset ──────────────────────────────────────────────────────────────── */
@@ -29,7 +35,6 @@
 
 /* ── Base ───────────────────────────────────────────────────────────────── */
 html { font-size: 16px; -webkit-text-size-adjust: 100%; }
-
 body {
   background-color: var(--bg);
   color: var(--text);
@@ -52,7 +57,6 @@ body {
   padding-bottom: 32px;
   margin-bottom: 0;
 }
-
 .site-header::after {
   content: '';
   display: block;
@@ -69,9 +73,25 @@ body {
   color: var(--text);
   text-decoration: none;
   display: inline-block;
+  position: relative;
 }
 
-.site-title:hover { color: var(--gold); }
+.site-title:hover { 
+  color: var(--gold); 
+}
+
+/* Red dot on the Enigfy header */
+.site-title::after {
+  content: '•';
+  position: absolute;
+  top: var(--dot-top);
+  right: var(--dot-right);
+  font-size: var(--dot-size);
+  color: var(--dot-color);
+  line-height: 1;
+  pointer-events: none;
+  font-weight: bold;
+}
 
 /* ── Navigation ─────────────────────────────────────────────────────────── */
 nav {
@@ -80,7 +100,6 @@ nav {
   flex-wrap: wrap;
   margin-bottom: 36px;
 }
-
 nav a {
   font-size: 0.78rem;
   font-weight: 400;
@@ -92,7 +111,6 @@ nav a {
   border-radius: var(--radius);
   transition: color 0.2s, background 0.2s;
 }
-
 nav a:hover,
 nav a.active {
   color: var(--gold);
@@ -110,15 +128,12 @@ nav a.active {
 .app-card {
   padding: 24px 0 20px;
 }
-
 .app-card:first-of-type {
   padding-top: 0;
 }
-
 .app-card + .app-card {
   border-top: 1px solid var(--border);
 }
-
 .app-name {
   font-family: var(--font-serif);
   font-weight: 400;
@@ -126,14 +141,12 @@ nav a.active {
   color: var(--text);
   margin-bottom: 4px;
 }
-
 .app-tagline {
   font-size: 0.88rem;
   font-weight: 400;
   color: var(--text-muted);
   margin-bottom: 14px;
 }
-
 .app-status {
   display: inline-block;
   font-size: 0.72rem;
@@ -146,14 +159,12 @@ nav a.active {
   padding: 2px 10px;
   margin-bottom: 14px;
 }
-
 .app-links {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
   align-items: center;
 }
-
 .app-links a {
   font-size: 0.82rem;
   color: var(--gold-dim);
@@ -161,7 +172,6 @@ nav a.active {
   border-bottom: 1px solid transparent;
   transition: color 0.2s, border-color 0.2s;
 }
-
 .app-links a:hover {
   color: var(--gold);
   border-bottom-color: var(--gold-dim);
@@ -175,7 +185,6 @@ nav a.active {
   color: var(--text);
   margin-bottom: 4px;
 }
-
 .page-meta {
   font-size: 0.82rem;
   color: var(--text-muted);
@@ -190,7 +199,6 @@ nav a.active {
   color: var(--text);
   margin: 36px 0 10px;
 }
-
 .prose h3 {
   font-size: 0.9rem;
   font-weight: 500;
@@ -199,36 +207,30 @@ nav a.active {
   margin: 24px 0 8px;
   text-transform: uppercase;
 }
-
 .prose p {
   font-size: 0.92rem;
   color: rgba(255,255,255,0.72);
   margin-bottom: 14px;
 }
-
 .prose ul {
   padding-left: 20px;
   margin-bottom: 14px;
 }
-
 .prose li {
   font-size: 0.92rem;
   color: rgba(255,255,255,0.72);
   margin-bottom: 6px;
 }
-
 .prose a {
   color: var(--gold-dim);
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: color 0.2s, border-color 0.2s;
 }
-
 .prose a:hover {
   color: var(--gold);
   border-bottom-color: var(--gold-dim);
 }
-
 .prose code {
   font-size: 0.82rem;
   background: rgba(255,255,255,0.06);
@@ -236,7 +238,6 @@ nav a.active {
   padding: 1px 5px;
   color: var(--text-muted);
 }
-
 .prose strong {
   font-weight: 500;
   color: var(--text);
@@ -254,12 +255,10 @@ footer {
   flex-wrap: wrap;
   gap: 8px;
 }
-
 footer a {
   color: var(--text-dim);
   text-decoration: none;
 }
-
 footer a:hover { color: var(--gold-dim); }
 
 /* ── Responsive ─────────────────────────────────────────────────────────── */
@@ -267,5 +266,5 @@ footer a:hover { color: var(--gold-dim); }
   .page { padding: 32px 20px 60px; }
   .site-title { font-size: 2rem; }
   .page-title { font-size: 1.6rem; }
-  .app-name   { font-size: 1.4rem; }
+  .app-name { font-size: 1.4rem; }
 }
