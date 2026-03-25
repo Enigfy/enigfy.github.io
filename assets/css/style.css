@@ -54,15 +54,16 @@ body {
 /* ── Site header ────────────────────────────────────────────────────────── */
 .site-header {
   text-align: center;
-  padding-bottom: 32px;
+  padding-bottom: 0;           /* removed the big bottom padding */
   margin-bottom: 0;
 }
+
 .site-header::after {
   content: '';
   display: block;
   height: 1px;
   background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
-  margin: 28px 0 32px;
+  margin: 20px 0 16px;         /* reduced space: 20px above + 16px below the line */
 }
 
 .site-title {
@@ -76,8 +77,8 @@ body {
   position: relative;
 }
 
-.site-title:hover { 
-  color: var(--gold); 
+.site-title:hover {
+  color: var(--gold);
 }
 
 /* Red dot on the Enigfy header */
@@ -91,6 +92,14 @@ body {
   line-height: 1;
   pointer-events: none;
   font-weight: bold;
+}
+
+/* ── Navigation ─────────────────────────────────────────────────────────── */
+nav {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
 }
 
 /* ── Navigation ─────────────────────────────────────────────────────────── */
