@@ -24,7 +24,7 @@
   --font-sans: 'DM Sans', system-ui, sans-serif;
   
   /* Red dot variables – easy to tweak */
-  --dot-color: #e51313;
+  --dot-color: #e52626;
   --dot-size: 36px;
   --dot-top: -4px;
   --dot-right: -16px;
@@ -63,7 +63,7 @@ body {
   display: block;
   height: 1px;
   background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
-  margin: 20px 0 8px;         /* reduced space: 20px above + 8px below the line */
+  margin: 20px 0 12px;         /* reduced space: 20px above + 12px below the line */
 }
 
 .site-title {
