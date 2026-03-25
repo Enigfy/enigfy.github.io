@@ -26,8 +26,8 @@
   /* Red dot variables – easy to tweak */
   --dot-color: #7A212A;
   --dot-size: 36px;
-  --dot-top: -18px;
-  --dot-right: -12px;
+  --dot-top: -24px;
+  --dot-right: -16px;
 }
 
 /* ── Reset ──────────────────────────────────────────────────────────────── */
