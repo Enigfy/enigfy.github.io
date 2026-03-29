@@ -54,7 +54,7 @@ body {
 /* ── Site header ────────────────────────────────────────────────────────── */
 .site-header {
   text-align: center;
-  padding-bottom: 0;
+  padding-bottom: 8px;
   margin-bottom: 0;
 }
 
@@ -63,9 +63,11 @@ body {
   display: block;
   height: 1px;
   background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
-  margin: 20px 0 12px;         /* reduced space: 20px above + 12px below the line */
+  margin: 20px auto 12px;   /* centered line */
+  max-width: 180px;         /* optional: keeps the line shorter and centered */
 }
 
+/* Main title "Enigfy" with red dot */
 .site-title {
   font-family: var(--font-serif);
   font-weight: 300;
@@ -75,23 +77,24 @@ body {
   text-decoration: none;
   display: inline-block;
   position: relative;
+  margin: 0 auto;
 }
 
 .site-title:hover {
   color: var(--gold);
 }
 
-/* Red dot on the Enigfy header */
+/* Red dot – adjusted for perfect centering */
 .site-title::after {
   content: '•';
   position: absolute;
-  top: var(--dot-top);
-  right: var(--dot-right);
-  font-size: var(--dot-size);
+  top: -6px;
+  right: -22px;           /* slightly adjusted */
+  font-size: 38px;
   color: var(--dot-color);
   line-height: 1;
   pointer-events: none;
-  font-weight: bold;
+  font-weight: 400;
 }
 
 /* ── Navigation ─────────────────────────────────────────────────────────── */
