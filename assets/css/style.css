@@ -23,18 +23,26 @@
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'DM Sans', system-ui, sans-serif;
   
-  /* Red dot variables – easy to tweak */
+  /* Red dot variables */
   --dot-color: #e52626;
-  --dot-size: 36px;
-  --dot-top: -4px;
-  --dot-right: -16px;
+  --dot-size: 42px;
+  --dot-top: -6px;
+  --dot-right: -28px;
 }
 
 /* ── Reset ──────────────────────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
 
 /* ── Base ───────────────────────────────────────────────────────────────── */
-html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+html { 
+  font-size: 16px; 
+  -webkit-text-size-adjust: 100%; 
+}
+
 body {
   background-color: var(--bg);
   color: var(--text);
@@ -51,10 +59,10 @@ body {
   padding: 48px 28px 80px;
 }
 
-/* ── Site header – treated as a proper logo ─────────────────────────────── */
+/* ── Site header – treated as proper centered logo ─────────────────────── */
 .site-header {
   text-align: center;
-  padding: 20px 0 12px;
+  padding: 32px 0 16px;
   margin-bottom: 0;
 }
 
@@ -63,61 +71,41 @@ body {
   display: block;
   height: 1px;
   background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
-  margin: 24px auto 16px;
-  max-width: 160px;           /* keeps the divider nicely centered and compact */
+  margin: 24px auto 20px;
+  max-width: 160px;
 }
 
 /* Main logo: "Enigfy" with red dot */
 .site-title {
   font-family: var(--font-serif);
   font-weight: 300;
-  font-size: 2.75rem;         /* slightly larger for better presence */
-  letter-spacing: 0.08em;
+  font-size: 2.8rem;
+  letter-spacing: 0.06em;
   color: var(--text);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   position: relative;
   white-space: nowrap;
   line-height: 1;
+  margin: 0 auto;
 }
 
-/* Hover effect */
 .site-title:hover {
   color: var(--gold);
 }
 
-/* Red dot – positioned as part of the logo */
+/* Red dot on the Enigfy header */
 .site-title::after {
   content: '•';
   position: absolute;
-  top: -4px;
-  right: -26px;
-  font-size: 42px;
+  top: var(--dot-top);
+  right: var(--dot-right);
+  font-size: var(--dot-size);
   color: var(--dot-color);
   line-height: 1;
   pointer-events: none;
-  font-weight: 400;
-  transform: translateX(4px);   /* fine-tune horizontal nudge */
-}
-
-/* ── Better mobile scaling ─────────────────────────────────────────────── */
-@media (max-width: 480px) {
-  .site-title {
-    font-size: 2.25rem;       /* scales down nicely on small phones */
-  }
-  
-  .site-title::after {
-    font-size: 34px;
-    right: -22px;
-    top: -3px;
-  }
-  
-  .site-header::after {
-    margin: 20px auto 12px;
-    max-width: 120px;
-  }
+  font-weight: bold;
 }
 
 /* ── Navigation ─────────────────────────────────────────────────────────── */
@@ -128,13 +116,6 @@ nav {
   margin-bottom: 36px;
 }
 
-/* ── Navigation ─────────────────────────────────────────────────────────── */
-nav {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-bottom: 36px;
-}
 nav a {
   font-size: 0.78rem;
   font-weight: 400;
@@ -146,6 +127,7 @@ nav a {
   border-radius: var(--radius);
   transition: color 0.2s, background 0.2s;
 }
+
 nav a:hover,
 nav a.active {
   color: var(--gold);
@@ -163,12 +145,15 @@ nav a.active {
 .app-card {
   padding: 24px 0 20px;
 }
+
 .app-card:first-of-type {
   padding-top: 0;
 }
+
 .app-card + .app-card {
   border-top: 1px solid var(--border);
 }
+
 .app-name {
   font-family: var(--font-serif);
   font-weight: 400;
@@ -176,12 +161,14 @@ nav a.active {
   color: var(--text);
   margin-bottom: 4px;
 }
+
 .app-tagline {
   font-size: 0.88rem;
   font-weight: 400;
   color: var(--text-muted);
   margin-bottom: 14px;
 }
+
 .app-status {
   display: inline-block;
   font-size: 0.72rem;
@@ -194,12 +181,14 @@ nav a.active {
   padding: 2px 10px;
   margin-bottom: 14px;
 }
+
 .app-links {
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
   align-items: center;
 }
+
 .app-links a {
   font-size: 0.82rem;
   color: var(--gold-dim);
@@ -207,6 +196,7 @@ nav a.active {
   border-bottom: 1px solid transparent;
   transition: color 0.2s, border-color 0.2s;
 }
+
 .app-links a:hover {
   color: var(--gold);
   border-bottom-color: var(--gold-dim);
@@ -220,6 +210,7 @@ nav a.active {
   color: var(--text);
   margin-bottom: 4px;
 }
+
 .page-meta {
   font-size: 0.88rem;
   font-weight: 400;
@@ -235,6 +226,7 @@ nav a.active {
   color: var(--text);
   margin: 36px 0 10px;
 }
+
 .prose h3 {
   font-size: 0.9rem;
   font-weight: 500;
@@ -243,30 +235,36 @@ nav a.active {
   margin: 24px 0 8px;
   text-transform: uppercase;
 }
+
 .prose p {
   font-size: 0.92rem;
   color: rgba(255,255,255,0.72);
   margin-bottom: 14px;
 }
+
 .prose ul {
   padding-left: 20px;
   margin-bottom: 14px;
 }
+
 .prose li {
   font-size: 0.92rem;
   color: rgba(255,255,255,0.72);
   margin-bottom: 6px;
 }
+
 .prose a {
   color: var(--gold-dim);
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: color 0.2s, border-color 0.2s;
 }
+
 .prose a:hover {
   color: var(--gold);
   border-bottom-color: var(--gold-dim);
 }
+
 .prose code {
   font-size: 0.82rem;
   background: rgba(255,255,255,0.06);
@@ -274,6 +272,7 @@ nav a.active {
   padding: 1px 5px;
   color: var(--text-muted);
 }
+
 .prose strong {
   font-weight: 500;
   color: var(--text);
@@ -291,16 +290,38 @@ footer {
   flex-wrap: wrap;
   gap: 8px;
 }
+
 footer a {
   color: var(--text-dim);
   text-decoration: none;
 }
-footer a:hover { color: var(--gold-dim); }
+
+footer a:hover { 
+  color: var(--gold-dim); 
+}
 
 /* ── Responsive ─────────────────────────────────────────────────────────── */
 @media (max-width: 480px) {
-  .page { padding: 32px 20px 60px; }
-  .site-title { font-size: 2rem; }
-  .page-title { font-size: 1.6rem; }
-  .app-name { font-size: 1.4rem; }
+  .page { 
+    padding: 32px 20px 60px; 
+  }
+  
+  .site-title { 
+    font-size: 2.3rem; 
+  }
+  
+  .site-title::after {
+    font-size: 36px;
+    right: -24px;
+    top: -4px;
+  }
+  
+  .site-header::after {
+    max-width: 120px;
+    margin: 20px auto 16px;
+  }
+  
+  .app-name { 
+    font-size: 1.4rem; 
+  }
 }
