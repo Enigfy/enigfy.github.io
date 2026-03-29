@@ -23,11 +23,11 @@
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'DM Sans', system-ui, sans-serif;
   
-  /* Red dot variables */
+  /* Red dot variables – easy to tweak */
   --dot-color: #e52626;
-  --dot-size: 36px;
-  --dot-top: -4px;
-  --dot-right: -16px;
+  --dot-size: 42px;
+  --dot-top: -6px;
+  --dot-right: -28px;
 }
 
 /* ── Reset ──────────────────────────────────────────────────────────────── */
@@ -56,7 +56,7 @@ body {
 .page {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 48px 28px 80px;
+  padding: 48px 28px 80px;   /* ← This is now the single source of horizontal padding */
 }
 
 /* ── Site header – treated as proper centered logo ─────────────────────── */
@@ -95,7 +95,7 @@ body {
   color: var(--gold);
 }
 
-/* Red dot on the Enigfy header */
+/* Red dot on the Enigfy header – exactly as you requested */
 .site-title::after {
   content: '•';
   position: absolute;
@@ -236,10 +236,11 @@ nav a.active {
   text-transform: uppercase;
 }
 
-.prose p {
+.prose p,
+.prose ul,
+.prose li {
   font-size: 0.92rem;
   color: rgba(255,255,255,0.72);
-  margin-bottom: 14px;
 }
 
 .prose ul {
@@ -248,8 +249,6 @@ nav a.active {
 }
 
 .prose li {
-  font-size: 0.92rem;
-  color: rgba(255,255,255,0.72);
   margin-bottom: 6px;
 }
 
