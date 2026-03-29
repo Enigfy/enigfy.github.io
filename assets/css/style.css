@@ -51,10 +51,10 @@ body {
   padding: 48px 28px 80px;
 }
 
-/* ── Site header ────────────────────────────────────────────────────────── */
+/* ── Site header – treated as a proper logo ─────────────────────────────── */
 .site-header {
   text-align: center;
-  padding-bottom: 8px;
+  padding: 20px 0 12px;
   margin-bottom: 0;
 }
 
@@ -63,38 +63,61 @@ body {
   display: block;
   height: 1px;
   background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
-  margin: 20px auto 12px;   /* centered line */
-  max-width: 180px;         /* optional: keeps the line shorter and centered */
+  margin: 24px auto 16px;
+  max-width: 160px;           /* keeps the divider nicely centered and compact */
 }
 
-/* Main title "Enigfy" with red dot */
+/* Main logo: "Enigfy" with red dot */
 .site-title {
   font-family: var(--font-serif);
   font-weight: 300;
-  font-size: 2.6rem;
-  letter-spacing: 0.12em;
+  font-size: 2.75rem;         /* slightly larger for better presence */
+  letter-spacing: 0.08em;
   color: var(--text);
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  margin: 0 auto;
+  white-space: nowrap;
+  line-height: 1;
 }
 
+/* Hover effect */
 .site-title:hover {
   color: var(--gold);
 }
 
-/* Red dot – adjusted for perfect centering */
+/* Red dot – positioned as part of the logo */
 .site-title::after {
   content: '•';
   position: absolute;
-  top: -6px;
-  right: -22px;           /* slightly adjusted */
-  font-size: 38px;
+  top: -4px;
+  right: -26px;
+  font-size: 42px;
   color: var(--dot-color);
   line-height: 1;
   pointer-events: none;
   font-weight: 400;
+  transform: translateX(4px);   /* fine-tune horizontal nudge */
+}
+
+/* ── Better mobile scaling ─────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .site-title {
+    font-size: 2.25rem;       /* scales down nicely on small phones */
+  }
+  
+  .site-title::after {
+    font-size: 34px;
+    right: -22px;
+    top: -3px;
+  }
+  
+  .site-header::after {
+    margin: 20px auto 12px;
+    max-width: 120px;
+  }
 }
 
 /* ── Navigation ─────────────────────────────────────────────────────────── */
