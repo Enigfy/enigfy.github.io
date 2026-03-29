@@ -54,7 +54,7 @@ body {
 /* ── Site header ────────────────────────────────────────────────────────── */
 .site-header {
   text-align: center;
-  padding-bottom: 0;           /* removed the big bottom padding */
+  padding-bottom: 0;
   margin-bottom: 0;
 }
 
