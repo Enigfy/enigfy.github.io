@@ -1,0 +1,345 @@
+/* ── Enigfy · style.css ────────────────────────────────────────────────────
+   Single stylesheet shared by all pages.
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* ── Fonts ─────────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ── Variables ──────────────────────────────────────────────────────────── */
+:root {
+  --bg:            #111111;
+  --bg-card:       #1a1a1a;
+  --bg-hover:      #1e1e1e;
+  --text:          rgba(255, 255, 255, 0.88);
+  --text-muted:    rgba(255, 255, 255, 0.42);
+  --text-dim:      rgba(255, 255, 255, 0.22);
+  --gold:          #c9a84c;
+  --gold-dim:      rgba(201, 168, 76, 0.55);
+  --gold-subtle:   rgba(201, 168, 76, 0.10);
+  --red:           #e52626;
+  --border:        rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --radius:        5px;
+  --max-width:     660px;
+  --font-serif:    'Cormorant Garamond', Georgia, serif;
+  --font-sans:     'DM Sans', system-ui, sans-serif;
+}
+
+/* ── Reset ──────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Base ───────────────────────────────────────────────────────────────── */
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ── Page wrapper ───────────────────────────────────────────────────────── */
+.page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 48px 28px 96px;
+}
+
+/* ── Site header ────────────────────────────────────────────────────────── */
+.site-header {
+  text-align: center;
+  padding: 28px 0 0;
+  margin-bottom: 0;
+}
+
+.site-header::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.12), transparent);
+  margin: 22px auto 20px;
+  max-width: 140px;
+}
+
+/* Enigfy wordmark */
+.site-title {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: 2.75rem;
+  letter-spacing: 0.05em;
+  color: var(--text);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: flex-start;
+  position: relative;
+  white-space: nowrap;
+  line-height: 1;
+  transition: color 0.25s ease;
+}
+
+.site-title:hover {
+  color: var(--gold);
+}
+
+/* Red dot accent */
+.site-title::after {
+  content: '•';
+  position: absolute;
+  top: -0.18em;
+  right: -0.38em;
+  font-size: 0.9em;
+  color: var(--red);
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ── Navigation ─────────────────────────────────────────────────────────── */
+nav {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+nav a {
+  font-size: 0.76rem;
+  font-weight: 400;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: var(--radius);
+  transition: color 0.2s, background 0.2s;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--gold);
+  background: var(--gold-subtle);
+}
+
+/* ── Page title + meta ───────────────────────────────────────────────────── */
+.page-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.75rem;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.page-meta {
+  font-size: 0.86rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+/* ── App cards (home page) ───────────────────────────────────────────────── */
+.app-card {
+  padding: 24px 0 20px;
+}
+
+.app-card:first-of-type {
+  padding-top: 0;
+}
+
+.app-card + .app-card {
+  border-top: 1px solid var(--border);
+}
+
+.app-name {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.65rem;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.app-tagline {
+  font-size: 0.86rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.app-status {
+  display: inline-block;
+  font-size: 0.70rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 20px;
+  padding: 2px 10px;
+  margin-bottom: 14px;
+}
+
+.app-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.app-links a {
+  font-size: 0.82rem;
+  color: var(--gold-dim);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.app-links a:hover {
+  color: var(--gold);
+  border-bottom-color: var(--gold-dim);
+}
+
+/* ── Prose (legal / content pages) ──────────────────────────────────────── */
+.prose {
+  margin-top: 4px;
+}
+
+.prose > p,
+.prose > ul {
+  margin-bottom: 16px;
+}
+
+.prose h2 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.25rem;
+  color: var(--text);
+  margin: 40px 0 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.prose h3 {
+  font-size: 0.80rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  margin: 24px 0 8px;
+  text-transform: uppercase;
+}
+
+.prose p,
+.prose li {
+  font-size: 0.91rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.70);
+}
+
+.prose ul {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.prose li {
+  margin-bottom: 6px;
+}
+
+.prose a {
+  color: var(--gold-dim);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.prose a:hover {
+  color: var(--gold);
+  border-bottom-color: var(--gold-dim);
+}
+
+.prose code {
+  font-size: 0.80rem;
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px;
+  padding: 1px 5px;
+  color: var(--text-muted);
+  font-family: 'SF Mono', 'Fira Code', monospace;
+}
+
+.prose strong {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.prose em {
+  font-style: italic;
+  color: rgba(255,255,255,0.80);
+}
+
+/* ── Divider ────────────────────────────────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-strong), transparent);
+  margin: 32px 0;
+}
+
+/* ── Footer ─────────────────────────────────────────────────────────────── */
+footer {
+  margin-top: 72px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 0.74rem;
+  letter-spacing: 0.01em;
+  color: var(--text-dim);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+footer a {
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+footer a:hover {
+  color: var(--gold-dim);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .page {
+    padding: 32px 20px 64px;
+  }
+
+  .site-title {
+    font-size: 2.2rem;
+  }
+
+  .site-header::after {
+    max-width: 110px;
+    margin: 18px auto 16px;
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  .app-name {
+    font-size: 1.4rem;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
