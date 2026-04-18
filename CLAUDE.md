@@ -1,8 +1,6 @@
 # Enigfy.com
 
-Static website for Enigfy — an independent lab where technology meets the human soul, and finally learns how to listen. Hosted on GitHub Pages via the `enigfy.github.io` repo with a custom domain (www.enigfy.com).
-
-The site motto on `index.html` is rendered with a `<br>` after "soul" so the second clause ("— and finally learns how to listen.") breaks onto its own line.
+Static website for Enigfy, a Tech Lab — playing where people meet technology. Hosted on GitHub Pages via the `enigfy.github.io` repo with a custom domain (www.enigfy.com).
 
 ## Structure
 
