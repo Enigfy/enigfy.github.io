@@ -1,6 +1,6 @@
 # Enigfy.com
 
-Static website for Enigfy Lab. Hosted on GitHub Pages via the `enigfy.github.io` repo with a custom domain (www.enigfy.com).
+Static website for Enigfy — an independent lab where technology meets the human soul. Hosted on GitHub Pages via the `enigfy.github.io` repo with a custom domain (www.enigfy.com).
 
 ## Structure
 
