@@ -283,6 +283,34 @@ nav a.active {
   color: rgba(255,255,255,0.80);
 }
 
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 16px;
+  font-size: 0.91rem;
+  line-height: 1.6;
+}
+
+.prose th,
+.prose td {
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.70);
+}
+
+.prose th {
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: 0.02em;
+  border-bottom-color: rgba(255,255,255,0.15);
+}
+
+.prose tbody tr:last-child td {
+  border-bottom: none;
+}
+
 /* ── Divider ────────────────────────────────────────────────────────────── */
 .divider {
   height: 1px;

@@ -8,6 +8,7 @@ Static website for Enigfy, a Tech Lab — playing where people meet technology. 
 - `index.html` — Home page
 - `contact.html`, `marienbad.html`, `monaco.html` — App/info pages
 - `privacy.html`, `privacy-marienbad.html`, `privacy-monaco.html`, `terms.html` — Legal pages
+- `privacy-monaco.md` — Markdown source for the Monaco privacy policy
 - `CNAME` — Custom domain config (www.enigfy.com)
 
 ## Deployment
