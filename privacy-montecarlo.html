@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Privacy Policy Monaco App</title>
-  <meta name="description" content="Privacy Policy for Monaco and other Enigfy apps.">
+  <title>Privacy Policy Monte Carlo App</title>
+  <meta name="description" content="Privacy Policy for Monte Carlo and other Enigfy apps.">
   <link rel="stylesheet" href="assets/css/style.css">
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -30,15 +30,15 @@
       <a href="montecarlo.html">Monte Carlo</a>
     </nav>
 
-    <h1 class="page-title">Privacy Policy - Monaco App</h1>
-    <p class="page-meta">Effective Date: April 21, 2026 &nbsp;·&nbsp; Enigfy</p>
+    <h1 class="page-title">Privacy Policy - Monte Carlo App</h1>
+    <p class="page-meta">Effective Date: April 27, 2026 &nbsp;·&nbsp; Enigfy</p>
 
     <div class="prose">
 
       <h2>1. Introduction</h2>
-      <p>Monaco ("the App") is a strategy game developed and published by Enigfy ("we," "our," or "us"). This Privacy Policy explains what information the App collects, how it is used, and your rights as a user.</p>
-      <p>We take your privacy seriously. Monaco does not require an account, does not collect personal data, and does not use advertising or analytics SDKs. The App communicates with an Enigfy-operated game server only when you use the Versus multiplayer mode, and only to facilitate gameplay — never for tracking, profiling, or advertising.</p>
-      <p>This policy covers the three components of Monaco: the iOS app (the "Alex" client), the game server operated by Enigfy, and the browser-based companion page (the "Bob" client) that an opponent uses to join a Versus match without installing anything. The server is a Ruby on Rails application hosted on Render.com in the United States, with a PostgreSQL database managed by Render. This policy is accessible within the App (via the Help screen) and at <a href="https://www.enigfy.com">www.enigfy.com</a>, as required by Apple's App Store Review Guidelines (Guideline 5.1).</p>
+      <p>Monte Carlo ("the App") is a strategy game developed and published by Enigfy ("we," "our," or "us"). This Privacy Policy explains what information the App collects, how it is used, and your rights as a user.</p>
+      <p>We take your privacy seriously. Monte Carlo does not require an account, does not collect personal data, and does not use advertising or analytics SDKs. The App communicates with an Enigfy-operated game server only when you use the Versus multiplayer mode, and only to facilitate gameplay — never for tracking, profiling, or advertising.</p>
+      <p>This policy covers the three components of Monte Carlo: the iOS app (the "Alex" client), the game server operated by Enigfy, and the browser-based companion page (the "Bob" client) that an opponent uses to join a Versus match without installing anything. The server is a Ruby on Rails application hosted on Render.com in the United States, with a PostgreSQL database managed by Render. This policy is accessible within the App (via the Help screen) and at <a href="https://www.enigfy.com">www.enigfy.com</a>, as required by Apple's App Store Review Guidelines (Guideline 5.1).</p>
 
       <h2>2. Who We Are</h2>
       <ul>
@@ -59,11 +59,11 @@
       </ul>
 
       <h3>3.2 Game counters</h3>
-      <p>Monaco uses three local counters to manage free-trial limits and purchase gating. These are simple integer values stored on your device:</p>
+      <p>Monte Carlo uses three local counters to manage free-trial limits and purchase gating. These are simple integer values stored on your device:</p>
       <ul>
         <li><strong>2-Star games played</strong> (<code>advancedGamesUsed</code>) — Counts the number of Solo games completed in 2-Star (colour-hint) mode. After 10 free games, a paywall is shown offering the Pro upgrade. This counter is never sent to the server.</li>
-        <li><strong>Versus sessions created</strong> (<code>versusTrialCount</code>) — Counts the number of Versus multiplayer sessions you have created. After 24 free sessions, a paywall is shown offering the Versus subscription. This counter is never sent to the server.</li>
-        <li><strong>Casino balance</strong> (<code>cheatBalance</code>) — The number of Casino Pack games remaining, tracked on the server (see section 4.2). A cached copy is held locally for display purposes.</li>
+        <li><strong>Versus sessions created</strong> (<code>versusTrialCount</code>) — Counts the number of Versus multiplayer sessions you have created. After 6 free sessions, a paywall is shown offering the Versus subscription. This counter is never sent to the server.</li>
+        <li><strong>Casino balance</strong> (<code>cheatBalance</code>) — The number of Casino Pack games remaining. Stored locally on your device and additionally synced to Apple's iCloud Key-Value Store so it survives app reinstalls and device transfers (see section 3.8). Decremented by one on the first Casino activation per Versus session. This counter is never sent to the Enigfy server.</li>
       </ul>
 
       <h3>3.3 Player name</h3>
@@ -71,9 +71,9 @@
 
       <h3>3.4 Purchase status</h3>
       <ul>
-        <li><strong>Pro unlock</strong> — A boolean flag indicating whether the Monaco Pro non-consumable has been purchased. Stored locally and verified against Apple's StoreKit entitlements on each app launch.</li>
+        <li><strong>Pro unlock</strong> — A boolean flag indicating whether the Monte Carlo Pro non-consumable has been purchased. Stored locally and verified against Apple's StoreKit entitlements on each app launch.</li>
         <li><strong>Versus subscription</strong> — Whether the 3-month auto-renewable subscription is active, determined at runtime from Apple's <code>Transaction.currentEntitlements</code>. No subscription details are persisted locally beyond an active/inactive flag and the expiration date.</li>
-        <li><strong>Casino Pack</strong> — The remaining game balance is fetched from the server and cached locally (see section 4.2).</li>
+        <li><strong>Casino Pack</strong> — The remaining game balance is stored locally on your device via UserDefaults.</li>
       </ul>
 
       <h3>3.5 Statistics and win celebration state</h3>
@@ -86,7 +86,7 @@
       <p>A list of total-game milestones at which the Pro upgrade sheet has already been shown (to avoid showing it repeatedly at the same milestone). Contains only integer values.</p>
 
       <h3>3.7 What is NOT stored</h3>
-      <p>Monaco does not store or access any of the following:</p>
+      <p>Monte Carlo does not store or access any of the following:</p>
       <ul>
         <li>Your real name, email address, or any contact information</li>
         <li>Your location</li>
@@ -96,8 +96,11 @@
         <li>Crash reports or usage analytics — no analytics SDK is included</li>
       </ul>
 
-      <h2>4. Data Sent to and Stored by the Server (Versus Mode Only)</h2>
-      <p>When you use Versus mode (two-player multiplayer), the App communicates with an Enigfy-operated game server over HTTPS and WebSocket (WSS). The server is a Ruby on Rails 8 API hosted on Render.com (Standard plan) in the United States, backed by a PostgreSQL database that Render manages. No server communication occurs during Solo mode or any other part of the App.</p>
+      <h3>3.8 iCloud Key-Value Store sync</h3>
+      <p>The Casino balance (section 3.2) is synced to Apple's iCloud Key-Value Store using your Apple ID's iCloud account. This allows the balance to survive app reinstalls and transfer between your devices signed into the same Apple ID. The synced value is a single integer (the remaining Casino game count). No other App data is synced to iCloud. This sync is handled entirely by Apple's iCloud infrastructure; the data is not sent to Enigfy's server. Apple's handling of iCloud data is governed by <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</p>
+
+      <h2>4. Data Sent to and Stored by the Server</h2>
+      <p>When you use Versus mode (two-player multiplayer), the App communicates with an Enigfy-operated game server over HTTPS and WebSocket (WSS). The server is a Ruby on Rails 8 API hosted on Render.com (Standard plan) in the United States, backed by a PostgreSQL database that Render manages. Apart from the lightweight server health check described in section 4.7 below, no server communication occurs during Solo mode.</p>
 
       <h3>4.1 Game session data</h3>
       <p>When you create a Versus session, the App sends:</p>
@@ -111,7 +114,7 @@
         <li>Two randomly generated authentication tokens (one for each player)</li>
         <li>The initial board state</li>
       </ul>
-      <p>For the lifetime of a session, the server stores a single database row containing only: the invite code, the four column heights, whose turn it is, the game status, the two authentication tokens, your display name, a count of live WebSocket subscribers, and Casino-mode flags. It stores no identifier linking this row to your Apple ID, your device, or any other Monaco game you have played or will play in the future. Session rows are never aggregated, exported, or used for analytics.</p>
+      <p>For the lifetime of a session, the server stores a single database row containing only: the invite code, the four column heights, whose turn it is, the game status, the two authentication tokens, your display name, a count of live WebSocket subscribers, and Casino-mode flags. It stores no identifier linking this row to your Apple ID, your device, or any other Monte Carlo game you have played or will play in the future. Session rows are never aggregated, exported, or used for analytics.</p>
 
       <h3>4.2 Data relayed through the server during gameplay</h3>
       <p>The server acts as a relay between the two players. All gameplay data sent by the App is forwarded (broadcast) by the server to your opponent's web browser, and vice versa. The data exchanged during a game consists of:</p>
@@ -127,7 +130,7 @@
       <p>Casino mode is an optional visual enhancement for Versus games (animated column pedestals + haptic feedback showing the winning move).</p>
       <ul>
         <li><strong>Toggle relay</strong>: When you activate or deactivate Casino mode, the App sends the toggle to the server, which broadcasts it to your opponent's web browser. This is the same relay pattern described in section 4.2.</li>
-        <li><strong>Casino Pack purchases</strong>: Casino Packs are consumable (20 games per pack). After purchase, the App sends the StoreKit transaction ID to the server to credit the games to your session token. The server tracks the remaining balance. This balance is not tied to any personal identifier — it is keyed to the randomly generated session token.</li>
+        <li><strong>Casino Pack purchases</strong>: Casino Packs are consumable (20 games per pack). After purchase, the balance is credited locally on your device. No purchase data or balance information is sent to the server.</li>
       </ul>
 
       <h3>4.4 What the server does NOT receive</h3>
@@ -148,8 +151,13 @@
       <p>The invite code and a randomly generated session token are passed to the page through the URL's query string (for example, <code>?code=ABCD1234&amp;token=…</code>). The page reads those values into memory, uses them to authenticate with the Enigfy server over HTTPS and WebSocket, and renders the live game state. Because the token appears in the URL, it may be retained in the opponent's browser history; however, it is valid only for that single session and becomes inert at most 24 hours later when the session row is deleted (section 4.5). Closing the tab ends the opponent's participation; nothing is written to the browser's persistent storage.</p>
       <p>Bob's client communicates only with the Enigfy server — never with any third party. From the server's perspective, it is handled identically to the iOS app: only moves, session tokens, and WebSocket routing data are received, and all of the guarantees in sections 4.1–4.5 apply.</p>
 
+      <h3>4.7 Server health check and web client pre-warm</h3>
+      <p>Each time the App is launched or returns to the foreground, it sends a single lightweight HTTPS GET request to the server's health-check endpoint (<code>/up</code>). This request wakes the server from idle sleep (the hosting provider suspends idle instances) and triggers routine cleanup of stale game sessions. The request contains no authentication token, no user identifier, and no payload — it is an anonymous HTTP GET. The server responds with a simple 200 OK status.</p>
+      <p>When you open the Versus setup screen, the App also sends a single anonymous GET request to the server's root URL (<code>/</code>) to pre-warm the web page that your opponent will load when scanning the QR code. This request likewise contains no token, no identifier, and no payload.</p>
+      <p>Both requests are subject to the same standard Render platform access logs described in section 4.5 (IP address only, used for operations and abuse prevention, never joined to session data).</p>
+
       <h2>5. In-App Purchases</h2>
-      <p>Monaco offers three optional In-App Purchase products, all processed entirely by Apple through the App Store:</p>
+      <p>Monte Carlo offers three optional In-App Purchase products, all processed entirely by Apple through the App Store:</p>
       <table>
         <thead>
           <tr>
@@ -160,7 +168,7 @@
         </thead>
         <tbody>
           <tr>
-            <td>Monaco Pro</td>
+            <td>Monte Carlo Pro</td>
             <td>One-time (non-consumable)</td>
             <td>Unlimited 2-Star colour hints in Solo mode</td>
           </tr>
@@ -181,33 +189,34 @@
       <ul>
         <li><strong>Pro</strong>: stores a simple "unlocked: yes/no" flag on your device.</li>
         <li><strong>Versus</strong>: checks Apple's <code>Transaction.currentEntitlements</code> at runtime — no subscription details are persisted beyond active/inactive and expiration date.</li>
-        <li><strong>Casino Pack</strong>: the App sends the StoreKit transaction ID to the server to credit the games (see section 4.2). The transaction ID is used solely for idempotent credit — it is not stored permanently or used for any other purpose.</li>
+        <li><strong>Casino Pack</strong>: the balance is credited locally on your device. No transaction data is sent to the server.</li>
       </ul>
       <p>No Apple ID information is retained by the App or the server.</p>
       <p>For information on how Apple handles payment data, please refer to <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</p>
 
       <h2>6. Third-Party Services and SDKs</h2>
-      <p>Monaco does not integrate any third-party analytics, advertising, crash reporting, or social networking SDKs. No personal data is shared with or transmitted to any third party by the App.</p>
+      <p>Monte Carlo does not integrate any third-party analytics, advertising, crash reporting, or social networking SDKs. No personal data is shared with or transmitted to any third party by the App.</p>
       <p>The frameworks used are:</p>
       <ul>
         <li><strong>Apple StoreKit</strong> — for In-App Purchase processing. Governed by Apple's privacy policy.</li>
-        <li><strong>Apple URLSession</strong> — for HTTPS and WebSocket communication with the Enigfy game server (Versus mode only).</li>
+        <li><strong>Apple URLSession</strong> — for HTTPS and WebSocket communication with the Enigfy game server (Versus mode and health check).</li>
+        <li><strong>Apple NSUbiquitousKeyValueStore (iCloud Key-Value Store)</strong> — for syncing the Casino balance across the user's devices (section 3.8). Governed by Apple's privacy policy.</li>
       </ul>
-      <p>No other third-party code is included. Monaco does not use any AI or machine-learning services, and no user data is shared with any third-party AI system.</p>
+      <p>No other third-party code is included. Monte Carlo does not use any AI or machine-learning services, and no user data is shared with any third-party AI system.</p>
 
       <h2>7. Data Collected by the App Store</h2>
-      <p>When you download, install, or make a purchase within Monaco, Apple may collect certain information as part of operating the App Store — for example, purchase history associated with your Apple ID, or crash logs submitted via Apple's opt-in diagnostics programme. This data is collected and controlled by Apple, not by Enigfy. Please refer to <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a> for details.</p>
+      <p>When you download, install, or make a purchase within Monte Carlo, Apple may collect certain information as part of operating the App Store — for example, purchase history associated with your Apple ID, or crash logs submitted via Apple's opt-in diagnostics programme. This data is collected and controlled by Apple, not by Enigfy. Please refer to <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a> for details.</p>
 
       <h2>8. App Store Privacy Details (Nutrition Label)</h2>
-      <p>Apple requires all apps to submit a Privacy Details declaration in App Store Connect, which appears on the App's product page. Monaco's declaration reflects the contents of this policy:</p>
+      <p>Apple requires all apps to submit a Privacy Details declaration in App Store Connect, which appears on the App's product page. Monte Carlo's declaration reflects the contents of this policy:</p>
       <ul>
-        <li><strong>Data Not Collected:</strong> Monaco does not collect any data linked to the user's identity as defined by Apple's App Privacy Details guidelines.</li>
+        <li><strong>Data Not Collected:</strong> Monte Carlo does not collect any data linked to the user's identity as defined by Apple's App Privacy Details guidelines.</li>
         <li><strong>No Tracking:</strong> The App does not track users across apps or websites owned by other companies.</li>
       </ul>
       <p>If there is any discrepancy between the App Store privacy label and this policy, this policy controls and we will update the label promptly.</p>
 
       <h2>9. Children's Privacy</h2>
-      <p>Monaco does not knowingly collect any personal information from any user, including children. The App does not require account registration and collects no personal data.</p>
+      <p>Monte Carlo does not knowingly collect any personal information from any user, including children. The App does not require account registration and collects no personal data.</p>
       <p>The applicable minimum age for digital consent varies by jurisdiction — for example, 13 under the United States' COPPA, and 13–16 under the European Union's GDPR (depending on the member state). Regardless of age, no personal data is collected by this App, so no age-based consent is required. Parental controls and family-sharing settings are managed through Apple's Screen Time and Family Sharing features in iOS Settings.</p>
 
       <h2>10. Data Retention and Deletion</h2>
@@ -216,7 +225,7 @@
       <p>All locally stored data (preferences, counters, statistics) lives exclusively on your device and is entirely under your control.</p>
       <p><strong>On-device data is retained indefinitely until you delete it.</strong> You can remove all App data at any time by:</p>
       <ul>
-        <li><strong>Deleting the App</strong> from your device (iOS Settings → General → iPhone Storage → Monaco → Delete App). This immediately and permanently removes all locally stored preferences and game counters.</li>
+        <li><strong>Deleting the App</strong> from your device (iOS Settings → General → iPhone Storage → Monte Carlo → Delete App). This immediately and permanently removes all locally stored preferences and game counters.</li>
         <li><strong>Resetting individual settings</strong> within the App's Settings screen.</li>
       </ul>
 
@@ -225,18 +234,18 @@
       <p>If you would like to delete an in-progress session before the 24-hour window expires, email <a href="mailto:info@enigfy.com">info@enigfy.com</a> with the invite code and we will remove the row manually.</p>
 
       <h2>11. Consent and Your Privacy Rights</h2>
-      <p>Monaco does not collect personal data. No consent to data collection is sought or required. There is accordingly no consent to revoke.</p>
+      <p>Monte Carlo does not collect personal data. No consent to data collection is sought or required. There is accordingly no consent to revoke.</p>
       <p>Standard data-subject rights — including the right of access, rectification, portability, and erasure — are satisfied automatically: the only data that exists on your device is under your control via the deletion methods in section 10.1. Server-side rights are addressed in the server privacy policy.</p>
       <p>If you have any questions or concerns about privacy, please contact us at <a href="mailto:info@enigfy.com">info@enigfy.com</a>. We will respond within 30 days.</p>
 
       <h2>12. International Users</h2>
-      <p>Monaco is available worldwide through the Apple App Store. The game server — and the web page served to Versus opponents — is hosted on Render.com in the United States, using Render's managed PostgreSQL service, also located in the United States. When you use Versus mode, game session data (board moves, display name, session tokens) is transmitted to this infrastructure. No personal data as defined by applicable privacy laws is transmitted — session tokens are randomly generated and not linked to any individual.</p>
+      <p>Monte Carlo is available worldwide through the Apple App Store. The game server — and the web page served to Versus opponents — is hosted on Render.com in the United States, using Render's managed PostgreSQL service, also located in the United States. When you use Versus mode, game session data (board moves, display name, session tokens) is transmitted to this infrastructure. No personal data as defined by applicable privacy laws is transmitted — session tokens are randomly generated and not linked to any individual.</p>
       <p>Users in the European Economic Area (EEA) and the United Kingdom are covered by this policy. The data transmitted during Versus gameplay (board state, randomly generated tokens) does not constitute personal data within the meaning of the EU General Data Protection Regulation (GDPR) or the UK GDPR, as it cannot be used to identify a natural person.</p>
       <p>Users in Switzerland are similarly covered under the Swiss Federal Act on Data Protection (revDSG).</p>
-      <p>Users in California and other US jurisdictions with state privacy laws (including the California Consumer Privacy Act, CCPA) are equally covered. Monaco does not collect, sell, share, or disclose personal information as defined by those laws.</p>
+      <p>Users in California and other US jurisdictions with state privacy laws (including the California Consumer Privacy Act, CCPA) are equally covered. Monte Carlo does not collect, sell, share, or disclose personal information as defined by those laws.</p>
 
       <h2>13. Apple Privacy Manifest</h2>
-      <p>In compliance with Apple's Privacy Manifest requirements (effective May 2024), Monaco includes a <code>PrivacyInfo.xcprivacy</code> file that declares the App's use of Apple's UserDefaults API (category <code>NSPrivacyAccessedAPICategoryUserDefaults</code>, reason code <code>CA92.1</code> — data directly tied to app functionality). No personal data types are declared as collected because no personal data is collected.</p>
+      <p>In compliance with Apple's Privacy Manifest requirements (effective May 2024), Monte Carlo includes a <code>PrivacyInfo.xcprivacy</code> file that declares the App's use of Apple's UserDefaults API (category <code>NSPrivacyAccessedAPICategoryUserDefaults</code>, reason code <code>CA92.1</code> — data directly tied to app functionality). The App also uses Apple's iCloud Key-Value Store (<code>NSUbiquitousKeyValueStore</code>) to sync the Casino balance (section 3.8); this is covered by the same iCloud entitlement. No personal data types are declared as collected because no personal data is collected.</p>
 
       <h2>14. Changes to This Privacy Policy</h2>
       <p>We may update this Privacy Policy from time to time. When we do, we will revise the "Effective Date" at the top of this page. For material changes, we will also update the App Store listing. We encourage you to review this policy periodically. Continued use of the App after any changes constitutes acceptance of the updated policy.</p>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enigfy · Monte Carlo</title>
+  <meta name="description" content="Monte Carlo — a strategic iOS game of misère Nim. Solo against a perfect computer, or Versus a friend who joins through their browser.">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <meta name="theme-color" content="#111111">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+  <div class="page">
+
+    <header class="site-header">
+      <a class="site-title" href="index.html">Enigfy</a>
+    </header>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="marienbad.html">Marienbad</a>
+      <a href="monaco.html">Monaco</a>
+      <a href="montecarlo.html" class="active">Monte Carlo</a>
+    </nav>
+
+    <h1 class="page-title">Monte Carlo</h1>
+    <p class="page-meta">Ancient strategy. Modern cats.</p>
+
+    <div class="prose">
+
+      <p>Monte Carlo is a game of misère Nim — the variant of the ancient mathematical game in which the player who takes the last piece loses. The board is a row of sixteen cats. The rule is simple. The strategy is two thousand years old. The phone in your pocket makes it new.</p>
+      <p>Play <strong>Solo</strong> against a computer that plays the perfect mathematical strategy, or against one that lets you find your way. Play <strong>Versus</strong> with a friend who joins instantly through their browser — no app for them to install, no account for either of you to create. Whoever organises the game is <strong>The Magician</strong>: the one who chooses the round, marks the <strong>Sigil</strong>, and presides while it is played.</p>
+
+      <h2>The Game Rules</h2>
+
+      <h3>The board always starts with four columns of cats</h3>
+      <p>1 &nbsp;·&nbsp; 3 &nbsp;·&nbsp; 5 &nbsp;·&nbsp; 7</p>
+      <p>Sixteen cats in total, arranged from a single sentinel on the left to a small crowd on the right. The first player decides whether they want to move first or yield the opening to their opponent — a choice that matters more than it appears.</p>
+
+      <h3>Players take turns</h3>
+      <p>On your turn you must remove one or more cats from a single column only. Cats are always taken from the top down of that column.</p>
+      <p>The player who is forced to take the very last cat on the entire board loses. Your goal is to leave exactly one cat for your opponent.</p>
+
+      <h3>How to move</h3>
+      <p>Press and hold any cat, then swipe up or sideways. Everything from the cat you touched upward will fly off the screen. In Solo mode the computer responds immediately. In Versus mode your move is broadcast to your opponent's browser within milliseconds.</p>
+
+      <h3>Two computers to play against</h3>
+      <p>The <strong>Smart Computer</strong> plays the mathematically optimal strategy, with the special misère adjustment for the endgame. It is very difficult to beat. If you play it from the standard opening position, you cannot beat it — the position is a losing one for whoever moves first against perfect play. This is one of the more counterintuitive truths of the game.</p>
+      <p>The <strong>Dumb Computer</strong> plays randomly half the time, except in the endgame where it plays correctly. It is beatable, and it is the right opponent while you are still learning how the game thinks.</p>
+
+      <h3>Two stars of difficulty</h3>
+      <p><strong>1-Star Mode</strong> is the unadorned game: you, the cats, your wits.</p>
+      <p><strong>2-Star Mode</strong> colours each cat green or red according to whether choosing it leads to a winning or losing move. It is the game with its mathematics revealed in real time, and it is the fastest way to develop intuition for misère Nim. Ten games are free; further play requires Pro.</p>
+
+      <h3>Versus play, in detail</h3>
+      <p>When you start a Versus game, your phone generates a Sigil — a small marked symbol that admits whoever scans it into your session. Your opponent points their phone's camera at the Sigil. Their browser opens. They are at the table. The whole exchange takes a few seconds and requires no installation, no login, no friction.</p>
+      <p>The Magician — the player who started the session — picks who goes first. Both players see the board update in real time as the game proceeds. After the round ends, the Magician can call a rematch, and the same Sigil keeps the company together for as long as the evening lasts.</p>
+
+      <h2>History</h2>
+
+      <h3>Origins</h3>
+      <p>Nim is a classic impartial combinatorial game in which two players alternate removing objects from distinct heaps. Its conceptual origins lie in ancient practices of manipulating counters, though direct evidence for the precise multi-heap form is limited.</p>
+      <p>In prehistoric times, early humans likely engaged in rudimentary strategic activities using stones, seeds, or bones arranged in piles — for recreation, divination, or decision-making. These represent conceptual precursors to the broader family of pebble-distribution games that later evolved across cultures.</p>
+
+      <h3>Ancient China</h3>
+      <p>The game is traditionally linked to ancient China, where variants of stone-removal games — sometimes called <em>jiǎn-shízǐ</em> ("picking stones") — are believed to have circulated for many centuries, possibly predating written records.</p>
+
+      <h3>European Renaissance</h3>
+      <p>European references to Nim-like games appear in the early 16th century. A notable example is found in <em>De Viribus Quantitatis</em> (c. 1508) by Luca Pacioli, which describes a simplified single-pile variant involving removal of numbers up to a fixed limit to reach a target. Similar recreations circulated widely in Renaissance mathematical literature.</p>
+
+      <h3>The modern theory</h3>
+      <p>The multi-heap version received formal mathematical recognition in 1901, when Harvard mathematician Charles Leonard Bouton published <em>Nim, A Game with a Complete Mathematical Theory</em>. Bouton introduced the Nim-sum — the bitwise XOR of heap sizes — as the key to determining winning and losing positions, and is credited with naming the game, possibly from the German imperative <em>nimm</em> ("take").</p>
+      <p>The 20th century brought early computing demonstrations, including the Nimatron (1940), an electromechanical device capable of playing perfect Nim, followed by digital implementations on every successive generation of machine.</p>
+
+      <h3>Marienbad</h3>
+      <p>In 1961, the game gained wider cultural prominence through its appearance in Alain Resnais's avant-garde film <em>L'Année dernière à Marienbad</em> (Last Year at Marienbad). Characters repeatedly play a matchstick variant of Nim — one consistently defeating the other through superior strategy — introducing the game to a much larger audience and giving the misère variant its cinematic name.</p>
+
+      <h3>Monaco</h3>
+      <p>The principality of Monaco is the spiritual home of organised play. In 1863, François Blanc — a French entrepreneur nicknamed <em>the Magician of Monte Carlo</em> — took over the operation of the Société des Bains de Mer and built the casino that turned a small Mediterranean rock into the most cultivated gaming destination in Europe. He understood, before almost anyone, that the deepest magic of any game is not in the cards or the wheel but in the gathering it brings together.</p>
+      <p>We chose his nickname for the role of the player who organises a Monte Carlo round. Every game has its Magician.</p>
+
+      <h3>Why this game</h3>
+      <p>Nim sits at the intersection of three things we care about: it is mathematically deep, it is ancient, and it can be played in two minutes on a phone with a friend. The misère variant — last move loses — adds the philosophical sting that gives the game its character. The first player has more choices than the second, and yet the first player loses. The position you would assume is advantageous turns out to be the losing one. This is, among other things, a small lesson in the difference between freedom and outcome.</p>
+      <p>We made Monte Carlo because we wanted a strategic game that respects the player's intelligence, runs offline on any iPhone, costs less than a cup of coffee, and produces no advertisements at any point. The cats are real — they are Oggy and her household — and they are how we celebrate the wins.</p>
+
+      <h2>What you get</h2>
+
+      <h3>Free</h3>
+      <ul>
+        <li>Unlimited 1-Star Solo play against either computer</li>
+        <li>Ten games of 2-Star Mode</li>
+        <li>Twenty-four Versus games against any friend</li>
+        <li>Six victory cat photos in rotation</li>
+      </ul>
+
+      <h3>Monte Carlo Pro — one-time purchase</h3>
+      <ul>
+        <li>Unlimited 2-Star Mode with the green/red move colouring</li>
+        <li>Choice of Smart or Dumb Computer in Solo</li>
+        <li>The full gallery of eighteen victory cat photos</li>
+      </ul>
+
+      <h3>Versus Subscription — three-month auto-renewable</h3>
+      <ul>
+        <li>Unlimited Versus sessions</li>
+        <li>Real-time play with anyone, on any phone, in any browser</li>
+      </ul>
+
+      <p>No advertisements. No accounts to create. No data collected beyond what is strictly required for play. Available now on the App Store.</p>
+
+    </div>
+
+    <footer>
+      <span>© 2026 Enigfy</span>
+      <span>
+        <a href="contact.html">Contact</a> &nbsp;·&nbsp;
+        <a href="terms.html">Terms</a> &nbsp;·&nbsp;
+        <a href="privacy.html">Privacy</a>
+      </span>
+    </footer>
+
+  </div>
+</body>
+</html>

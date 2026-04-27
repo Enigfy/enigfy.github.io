@@ -6,10 +6,15 @@ Static website for Enigfy, a Tech Lab — playing where people meet technology. 
 
 - `assets/css/` — Stylesheets
 - `index.html` — Home page
-- `contact.html`, `marienbad.html`, `monaco.html` — App/info pages
-- `privacy.html`, `privacy-marienbad.html`, `privacy-monaco.html`, `terms.html` — Legal pages
-- `privacy-monaco.md` — Markdown source for the Monaco privacy policy
+- `contact.html`, `marienbad.html`, `monaco.html`, `montecarlo.html` — App/info pages
+- `privacy.html`, `privacy-marienbad.html`, `privacy-monaco.html`, `privacy-montecarlo.html`, `terms.html` — Legal pages
+- `privacy-monaco.md`, `privacy-montecarlo.md` — Markdown sources for per-app privacy policies
 - `CNAME` — Custom domain config (www.enigfy.com)
+
+## Naming conventions
+
+- **Monte Carlo** (two words) — user-facing copy: page titles, nav labels, body text, app name in privacy/terms.
+- **montecarlo** (one word, lowercase) — technical only: filenames, URLs, anchors, `href` attributes.
 
 ## Deployment
 
