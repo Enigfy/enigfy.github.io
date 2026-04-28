@@ -62,7 +62,7 @@
       <p>Monte Carlo uses three local counters to manage free-trial limits and purchase gating. These are simple integer values stored on your device:</p>
       <ul>
         <li><strong>2-Star games played</strong> (<code>advancedGamesUsed</code>) — Counts the number of Solo games completed in 2-Star (colour-hint) mode. After 10 free games, a paywall is shown offering the Pro upgrade. This counter is never sent to the server.</li>
-        <li><strong>Versus sessions created</strong> (<code>versusTrialCount</code>) — Counts the number of Versus multiplayer sessions you have created. After 6 free sessions, a paywall is shown offering the Versus subscription. This counter is never sent to the server.</li>
+        <li><strong>Versus sessions created</strong> (<code>versusTrialCount</code>) — Counts the number of Versus multiplayer sessions you have created. After 6 free sessions, a paywall is shown offering the Versus subscription. Stored locally on your device and additionally synced to Apple's iCloud Key-Value Store so it survives app reinstalls and device transfers (see section 3.8). This counter is never sent to the Enigfy server.</li>
         <li><strong>Casino balance</strong> (<code>cheatBalance</code>) — The number of Casino Pack games remaining. Stored locally on your device and additionally synced to Apple's iCloud Key-Value Store so it survives app reinstalls and device transfers (see section 3.8). Decremented by one on the first Casino activation per Versus session. This counter is never sent to the Enigfy server.</li>
       </ul>
 
@@ -97,7 +97,7 @@
       </ul>
 
       <h3>3.8 iCloud Key-Value Store sync</h3>
-      <p>The Casino balance (section 3.2) is synced to Apple's iCloud Key-Value Store using your Apple ID's iCloud account. This allows the balance to survive app reinstalls and transfer between your devices signed into the same Apple ID. The synced value is a single integer (the remaining Casino game count). No other App data is synced to iCloud. This sync is handled entirely by Apple's iCloud infrastructure; the data is not sent to Enigfy's server. Apple's handling of iCloud data is governed by <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</p>
+      <p>The Casino balance and Versus trial count (sections 3.2) are synced to Apple's iCloud Key-Value Store using your Apple ID's iCloud account. This allows both values to survive app reinstalls and transfer between your devices signed into the same Apple ID. The synced values are two integers (the remaining Casino game count and the number of Versus sessions created). No other App data is synced to iCloud. This sync is handled entirely by Apple's iCloud infrastructure; the data is not sent to Enigfy's server. Apple's handling of iCloud data is governed by <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</p>
 
       <h2>4. Data Sent to and Stored by the Server</h2>
       <p>When you use Versus mode (two-player multiplayer), the App communicates with an Enigfy-operated game server over HTTPS and WebSocket (WSS). The server is a Ruby on Rails 8 API hosted on Render.com (Standard plan) in the United States, backed by a PostgreSQL database that Render manages. Apart from the lightweight server health check described in section 4.7 below, no server communication occurs during Solo mode.</p>
@@ -200,7 +200,7 @@
       <ul>
         <li><strong>Apple StoreKit</strong> — for In-App Purchase processing. Governed by Apple's privacy policy.</li>
         <li><strong>Apple URLSession</strong> — for HTTPS and WebSocket communication with the Enigfy game server (Versus mode and health check).</li>
-        <li><strong>Apple NSUbiquitousKeyValueStore (iCloud Key-Value Store)</strong> — for syncing the Casino balance across the user's devices (section 3.8). Governed by Apple's privacy policy.</li>
+        <li><strong>Apple NSUbiquitousKeyValueStore (iCloud Key-Value Store)</strong> — for syncing the Casino balance and Versus trial count across the user's devices (section 3.8). Governed by Apple's privacy policy.</li>
       </ul>
       <p>No other third-party code is included. Monte Carlo does not use any AI or machine-learning services, and no user data is shared with any third-party AI system.</p>
 
@@ -245,7 +245,7 @@
       <p>Users in California and other US jurisdictions with state privacy laws (including the California Consumer Privacy Act, CCPA) are equally covered. Monte Carlo does not collect, sell, share, or disclose personal information as defined by those laws.</p>
 
       <h2>13. Apple Privacy Manifest</h2>
-      <p>In compliance with Apple's Privacy Manifest requirements (effective May 2024), Monte Carlo includes a <code>PrivacyInfo.xcprivacy</code> file that declares the App's use of Apple's UserDefaults API (category <code>NSPrivacyAccessedAPICategoryUserDefaults</code>, reason code <code>CA92.1</code> — data directly tied to app functionality). The App also uses Apple's iCloud Key-Value Store (<code>NSUbiquitousKeyValueStore</code>) to sync the Casino balance (section 3.8); this is covered by the same iCloud entitlement. No personal data types are declared as collected because no personal data is collected.</p>
+      <p>In compliance with Apple's Privacy Manifest requirements (effective May 2024), Monte Carlo includes a <code>PrivacyInfo.xcprivacy</code> file that declares the App's use of Apple's UserDefaults API (category <code>NSPrivacyAccessedAPICategoryUserDefaults</code>, reason code <code>CA92.1</code> — data directly tied to app functionality). The App also uses Apple's iCloud Key-Value Store (<code>NSUbiquitousKeyValueStore</code>) to sync the Casino balance and Versus trial count (section 3.8); this is covered by the same iCloud entitlement. No personal data types are declared as collected because no personal data is collected.</p>
 
       <h2>14. Changes to This Privacy Policy</h2>
       <p>We may update this Privacy Policy from time to time. When we do, we will revise the "Effective Date" at the top of this page. For material changes, we will also update the App Store listing. We encourage you to review this policy periodically. Continued use of the App after any changes constitutes acceptance of the updated policy.</p>

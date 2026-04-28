@@ -32,7 +32,7 @@ The following information is saved on your device only, using Apple's standard U
 Monte Carlo uses three local counters to manage free-trial limits and purchase gating. These are simple integer values stored on your device:
 
 - **2-Star games played** (`advancedGamesUsed`) — Counts the number of Solo games completed in 2-Star (colour-hint) mode. After 10 free games, a paywall is shown offering the Pro upgrade. This counter is never sent to the server.
-- **Versus sessions created** (`versusTrialCount`) — Counts the number of Versus multiplayer sessions you have created. After 6 free sessions, a paywall is shown offering the Versus subscription. This counter is never sent to the server.
+- **Versus sessions created** (`versusTrialCount`) — Counts the number of Versus multiplayer sessions you have created. After 6 free sessions, a paywall is shown offering the Versus subscription. Stored locally on your device and additionally synced to Apple's iCloud Key-Value Store so it survives app reinstalls and device transfers (see section 3.8). This counter is never sent to the Enigfy server.
 - **Casino balance** (`cheatBalance`) — The number of Casino Pack games remaining. Stored locally on your device and additionally synced to Apple's iCloud Key-Value Store so it survives app reinstalls and device transfers (see section 3.8). Decremented by one on the first Casino activation per Versus session. This counter is never sent to the Enigfy server.
 
 ### 3.3 Player name
@@ -67,7 +67,7 @@ Monte Carlo does not store or access any of the following:
 
 ### 3.8 iCloud Key-Value Store sync
 
-The Casino balance (section 3.2) is synced to Apple's iCloud Key-Value Store using your Apple ID's iCloud account. This allows the balance to survive app reinstalls and transfer between your devices signed into the same Apple ID. The synced value is a single integer (the remaining Casino game count). No other App data is synced to iCloud. This sync is handled entirely by Apple's iCloud infrastructure; the data is not sent to Enigfy's server. Apple's handling of iCloud data is governed by [Apple's Privacy Policy](https://www.apple.com/legal/privacy/).
+The Casino balance and Versus trial count (sections 3.2) are synced to Apple's iCloud Key-Value Store using your Apple ID's iCloud account. This allows both values to survive app reinstalls and transfer between your devices signed into the same Apple ID. The synced values are two integers (the remaining Casino game count and the number of Versus sessions created). No other App data is synced to iCloud. This sync is handled entirely by Apple's iCloud infrastructure; the data is not sent to Enigfy's server. Apple's handling of iCloud data is governed by [Apple's Privacy Policy](https://www.apple.com/legal/privacy/).
 
 ## 4. Data Sent to and Stored by the Server
 
@@ -167,7 +167,7 @@ The frameworks used are:
 
 - **Apple StoreKit** — for In-App Purchase processing. Governed by Apple's privacy policy.
 - **Apple URLSession** — for HTTPS and WebSocket communication with the Enigfy game server (Versus mode and health check).
-- **Apple NSUbiquitousKeyValueStore (iCloud Key-Value Store)** — for syncing the Casino balance across the user's devices (section 3.8). Governed by Apple's privacy policy.
+- **Apple NSUbiquitousKeyValueStore (iCloud Key-Value Store)** — for syncing the Casino balance and Versus trial count across the user's devices (section 3.8). Governed by Apple's privacy policy.
 
 No other third-party code is included. Monte Carlo does not use any AI or machine-learning services, and no user data is shared with any third-party AI system.
 
@@ -227,7 +227,7 @@ Users in California and other US jurisdictions with state privacy laws (includin
 
 ## 13. Apple Privacy Manifest
 
-In compliance with Apple's Privacy Manifest requirements (effective May 2024), Monte Carlo includes a `PrivacyInfo.xcprivacy` file that declares the App's use of Apple's UserDefaults API (category `NSPrivacyAccessedAPICategoryUserDefaults`, reason code `CA92.1` — data directly tied to app functionality). The App also uses Apple's iCloud Key-Value Store (`NSUbiquitousKeyValueStore`) to sync the Casino balance (section 3.8); this is covered by the same iCloud entitlement. No personal data types are declared as collected because no personal data is collected.
+In compliance with Apple's Privacy Manifest requirements (effective May 2024), Monte Carlo includes a `PrivacyInfo.xcprivacy` file that declares the App's use of Apple's UserDefaults API (category `NSPrivacyAccessedAPICategoryUserDefaults`, reason code `CA92.1` — data directly tied to app functionality). The App also uses Apple's iCloud Key-Value Store (`NSUbiquitousKeyValueStore`) to sync the Casino balance and Versus trial count (section 3.8); this is covered by the same iCloud entitlement. No personal data types are declared as collected because no personal data is collected.
 
 ## 14. Changes to This Privacy Policy
 
