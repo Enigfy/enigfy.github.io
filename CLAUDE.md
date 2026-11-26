@@ -7,7 +7,7 @@ Archetype: **Static website**. Platform-wide rules live in `~/Projects/_platform
 ## Structure
 
 - `index.html` — Home page
-- `montecarlo.html`, `monaco.html` — App pages
+- `montecarlo.html`, `monaco.html`, `marienbad.html`, `mentiroso.html`, `moebius.html` — App pages. `marienbad.html` holds the misère-Nim cat game (moved from `montecarlo.html` on 26 Nov 2026); `montecarlo.html`, `monaco.html`, `mentiroso.html` and `moebius.html` are placeholders.
 - `contact.html` — Contact page
 - `privacy.html` — General privacy notice
 - `privacy-montecarlo.html`, `privacy-monaco.html` — Per-app privacy policies. App Store records and in-app Help screens are likely to link to these URLs, so don't rename or move them without checking those first.
@@ -21,7 +21,7 @@ Archetype: **Static website**. Platform-wide rules live in `~/Projects/_platform
 
 There is no templating and no build step. Every page is a standalone HTML file that repeats the same `<head>` icon links, header, `<nav>` and `<footer>`, so a change to any of these must be made in **every** `.html` file.
 
-- **Nav order:** Home · Monte Carlo · Monaco (set 22 May 2026). The current page's link carries `class="active"`.
+- **Nav order:** Home · Monte Carlo · Monaco · Marienbad · Mentiroso · Moebius (set 26 Nov 2026, same on every page). The current page's link carries `class="active"`.
 - **Footer:** `© 2026 Enigfy`, then Contact · Terms · Privacy.
 - **Body:** page title in `h1.page-title`, subtitle in `p.page-meta`, content inside `div.prose`.
 
@@ -29,6 +29,8 @@ There is no templating and no build step. Every page is a standalone HTML file t
 
 - **Monte Carlo** (two words) — user-facing copy: page titles, nav labels, body text, app name in privacy/terms.
 - **montecarlo** (one word, lowercase) — technical only: filenames, URLs, anchors, `href` attributes.
+- The same pattern holds for the other games: **Marienbad**/`marienbad`, **Mentiroso**/`mentiroso`, **Moebius**/`moebius`.
+- On the site, the misère-Nim cat game is called **Marienbad** (renamed from Monte Carlo on 26 Nov 2026).
 
 ## Privacy policies
 
@@ -43,11 +45,13 @@ There is no templating and no build step. Every page is a standalone HTML file t
 - Remote: `https://github.com/Enigfy/enigfy.github.io.git`. Capital E is canonical.
 - Commit messages: imperative mood, one logical change per commit, as in the existing history.
 
-## Current state (26 November 2026)
+## Current state (26 November 2026, evening)
 
 Update this section with every change that alters it (platform CLAUDE.md, rule 3).
 
-- **Monte Carlo is out of date.** `montecarlo.html` and `privacy-montecarlo.html` (effective 27 April 2026) still describe 1.x: Versus play through the opponent's browser and the Enigfy Rails server on Render. That server was retired on 16 November 2026, and 2.0 uses GameKit. Both pages need a rewrite for 2.0, timed with its release.
+- **Nim game renamed Monte Carlo → Marienbad (26 Nov 2026).** The game description moved from `montecarlo.html` to the new `marienbad.html`; `montecarlo.html` now says "Description under preparation". Home says "Our first game is Marienbad."
+- **Not yet renamed (pending owner approval):** `privacy-montecarlo.html` (24 mentions of Monte Carlo) and the link label "Privacy Policy — Monte Carlo" plus meta description in `privacy.html`. These are privacy content and need an approved draft.
+- **Marienbad page is out of date.** `marienbad.html` (and `privacy-montecarlo.html`, effective 27 April 2026) still describe 1.x: Versus play through the opponent's browser and the Enigfy Rails server on Render. That server was retired on 16 November 2026, and 2.0 uses GameKit. Both pages need a rewrite for 2.0, timed with its release.
+- **Mentiroso, Moebius, Monaco:** placeholder pages ("In preparation").
 - **Monaco:** `privacy-monaco.html` is a stub ("In preparation"), and it has a stray closing `</div>`.
-- **Nav order:** `privacy-monaco.html` and `terms.html` still use the old Monaco-first order.
-- The Marienbad page and its privacy policy were removed on 22 May 2026.
+- An earlier Marienbad page and its privacy policy were removed on 22 May 2026; `marienbad.html` was re-created on 26 Nov 2026 for the Nim game.
