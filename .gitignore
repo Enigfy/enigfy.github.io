@@ -1,0 +1,5 @@
+# macOS Finder metadata
+.DS_Store
+
+# Per-machine Claude Code permissions (not shared)
+.claude/settings.local.json
