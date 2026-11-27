@@ -711,6 +711,7 @@ button{cursor:pointer;border:0;background:none}
 .ranum{width:26px;height:26px;border-radius:7px;background:var(--blue);color:#fff;border:2px solid #fff;font:700 15px/22px var(--road);text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.5)}
 .leaflet-container{font-family:Barlow,system-ui,sans-serif}
 .leaflet-control-attribution{font-size:10px!important}
+#map.night .leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.85) contrast(.9) saturate(.6)}
 
 /* read-outs */
 #stats{padding:12px 16px 10px;border-bottom:1px solid var(--line)}
@@ -942,11 +943,11 @@ const map=L.map('map',{zoomControl:false,preferCanvas:true,attributionControl:tr
 map.attributionControl.setPrefix(false);
 const TILES={
   light:['https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap contributors'}],
-  dark:['https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:19,subdomains:'abcd',attribution:'© OpenStreetMap contributors © CARTO'}]
+  dark:['https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap contributors'}]
 };
 let tileLayer=null, tileKind='';
 const mq=window.matchMedia('(prefers-color-scheme: dark)');
-function applyTiles(){const k=pref.map==='auto'?(mq.matches?'dark':'light'):pref.map;if(k===tileKind)return;if(tileLayer)map.removeLayer(tileLayer);tileLayer=L.tileLayer(TILES[k][0],TILES[k][1]).addTo(map);tileKind=k}
+function applyTiles(){const k=pref.map==='auto'?(mq.matches?'dark':'light'):pref.map;if(k===tileKind)return;if(tileLayer)map.removeLayer(tileLayer);tileLayer=L.tileLayer(TILES[k][0],TILES[k][1]).addTo(map);tileKind=k;$('#map').classList.toggle('night',k==='dark')}
 mq.addEventListener?mq.addEventListener('change',applyTiles):mq.addListener(applyTiles);
 applyTiles();
 let routeLine=null, doneLine=null, destLayer=L.layerGroup().addTo(map), restLayer=L.layerGroup().addTo(map), meMarker=null;
@@ -1100,7 +1101,7 @@ async function loadRest(){
   const gen=++loadGen; loadState={busy:true,err:null}; renderStatus();
   let from=Math.max(trip.restDone||0,along-2000,0);
   while(gen===loadGen&&from<R.total-50){
-    const to=Math.min(R.total,from+CHUNK);
+    const to=Math.min(R.total,from+(from<=Math.max(0,along-2000)+1?40000:CHUNK));
     try{
       const j=await overpass(restQuery(samplePts(from,to)));
       if(gen!==loadGen)return;
