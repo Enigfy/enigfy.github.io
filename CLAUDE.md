@@ -15,6 +15,7 @@ Archetype: **Static website**. Platform-wide rules live in `~/Projects/_platform
 - `privacy-montecarlo.md`, `privacy-monaco.md` — Earlier drafts of the per-app policies; see "Privacy policies" below
 - `assets/css/style.css` — The only stylesheet
 - `favicon.*`, `apple-touch-icon.png`, `web-app-manifest-*.png`, `site.webmanifest` — Icons and web-app manifest
+- `highway/` — Highway Companion, the owner's personal in-car web app (live map, distance/time covered and remaining, next 3 motorway rest areas). Unlisted: not in `<nav>`, `noindex`. Self-contained `index.html` (Leaflet inlined; calls OSRM, Nominatim and Overpass from the browser) plus `apple-touch-icon.png`. It does not use the site's header, nav, footer or stylesheet, so the page-anatomy rules below don't apply to it.
 - `CNAME` — Custom domain (`www.enigfy.com`). Do not edit or delete; GitHub Pages drops the domain without it.
 
 ## Page anatomy
@@ -45,9 +46,11 @@ There is no templating and no build step. Every page is a standalone HTML file t
 - Remote: `https://github.com/Enigfy/enigfy.github.io.git`. Capital E is canonical.
 - Commit messages: imperative mood, one logical change per commit, as in the existing history.
 
-## Current state (26 November 2026, evening)
+## Current state (27 November 2026)
 
 Update this section with every change that alters it (platform CLAUDE.md, rule 3).
+
+- **Highway Companion added at `/highway/` (27 Nov 2026).** Personal tool, unlisted, for the Alicante/Dénia ↔ Pully drive. Source and test harness are outside this repo.
 
 - **Nim game renamed Monte Carlo → Marienbad (26 Nov 2026).** The game description moved from `montecarlo.html` to the new `marienbad.html`; `montecarlo.html` now says "Description under preparation". Home says "Our first game is Marienbad."
 - **Not yet renamed (pending owner approval):** `privacy-montecarlo.html` (24 mentions of Monte Carlo) and the link label "Privacy Policy — Monte Carlo" plus meta description in `privacy.html`. These are privacy content and need an approved draft.
