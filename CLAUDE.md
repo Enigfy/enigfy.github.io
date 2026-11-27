@@ -15,7 +15,7 @@ Archetype: **Static website**. Platform-wide rules live in `~/Projects/_platform
 - `privacy-montecarlo.md`, `privacy-monaco.md` — Earlier drafts of the per-app policies; see "Privacy policies" below
 - `assets/css/style.css` — The only stylesheet
 - `favicon.*`, `apple-touch-icon.png`, `web-app-manifest-*.png`, `site.webmanifest` — Icons and web-app manifest
-- `highway/` — Highway Companion, the owner's personal in-car web app (live map, distance/time covered and remaining, next 3 motorway rest areas). Unlisted: not in `<nav>`, `noindex`. Self-contained `index.html` (Leaflet inlined; calls OSRM, Nominatim and Overpass from the browser) plus `apple-touch-icon.png`. It does not use the site's header, nav, footer or stylesheet, so the page-anatomy rules below don't apply to it.
+- `highway/` — Highway Companion, the owner's personal in-car web app (live map, distance/time covered and remaining, next 3 motorway rest areas). Unlisted: not in `<nav>`, `noindex`. Self-contained `index.html` (Leaflet inlined; calls OSRM, Nominatim and Overpass from the browser) plus `apple-touch-icon.png`. Its offline rest-area data (Alicante → Perpignan → Valence → Genève → Zurich, ±50 km, 10-day TTL) is built and stored on the phone, not in this repo. It does not use the site's header, nav, footer or stylesheet, so the page-anatomy rules below don't apply to it.
 - `CNAME` — Custom domain (`www.enigfy.com`). Do not edit or delete; GitHub Pages drops the domain without it.
 
 ## Page anatomy

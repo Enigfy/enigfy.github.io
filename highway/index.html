@@ -794,6 +794,8 @@ button{cursor:pointer;border:0;background:none}
 .seg{display:flex;background:var(--panel);border-radius:10px;padding:3px;flex:none}
 .seg button{min-height:40px;padding:0 12px;border-radius:8px;font-size:14px;font-weight:600;color:var(--mute)}
 .seg button[aria-pressed=true]{background:#fff;color:var(--bg)}
+.dbbox{border-top:1px solid var(--line);padding-top:14px;margin-top:4px}.dbbox p,.dbline{color:var(--mute);font-size:15px;margin:6px 0 12px}
+.act:disabled{opacity:.6}
 .close{position:absolute;right:calc(env(safe-area-inset-right) + 12px);top:calc(env(safe-area-inset-top) + 10px);width:48px;height:48px;font-size:28px;color:var(--mute)}
 @media (prefers-reduced-motion:reduce){.prog i{transition:none}}
 </style>
@@ -872,6 +874,8 @@ button{cursor:pointer;border:0;background:none}
     </div>
     <button type="button" class="primary" id="go">Start trip</button>
     <p class="msg" id="setupMsg" role="status"></p>
+    <p class="dbline" id="dbInfo2"></p>
+    <button type="button" class="add" id="sDbUpdate">Update rest-area data now</button>
     <p class="fine">Keep the phone in a mount and let a passenger change settings. Rest areas come from OpenStreetMap: a "service area" has fuel and food; a "rest area" is parking, often with toilets. Map data © OpenStreetMap contributors · routing by OSRM · places by Nominatim · rest areas via Overpass.</p>
   </div>
 </div>
@@ -887,6 +891,9 @@ button{cursor:pointer;border:0;background:none}
     <div class="row"><span>Rest areas shown</span><div class="seg" id="segSide"><button data-v="mine">My direction</button><button data-v="both">Both sides</button></div></div>
     <div class="row"><span>Map</span><div class="seg" id="segMap"><button data-v="auto">Auto</button><button data-v="light">Day</button><button data-v="dark">Night</button></div></div>
     <div class="row"><span id="wakeTxt">Screen stays on</span></div>
+    <div class="dbbox"><b>Offline rest-area data</b><p id="dbInfo"></p>
+      <button class="act" id="mDbUpdate">Update rest-area data now</button>
+      <button class="act" id="mDbCopy">Copy the data as JSON</button></div>
     <button class="act danger" id="mEnd">End trip and plan a new one</button>
   </div>
 </div>
@@ -901,7 +908,7 @@ button{cursor:pointer;border:0;background:none}
 {
 'use strict';
 /* ---------- constants ---------- */
-const KEY_ROUTE='hwc.route.v1', KEY_TRIP='hwc.trip.v1', KEY_PREF='hwc.pref.v1', KEY_RECENT='hwc.recent.v1';
+const KEY_DB='hwc.restdb.v1', KEY_ROUTE='hwc.route.v1', KEY_TRIP='hwc.trip.v1', KEY_PREF='hwc.pref.v1', KEY_RECENT='hwc.recent.v1';
 const PRESETS=[
   {name:'Alicante',lat:38.3452,lon:-0.4810},
   {name:'Dénia',lat:38.8408,lon:0.1057},
@@ -910,6 +917,9 @@ const PRESETS=[
 const OSRM='https://router.project-osrm.org/route/v1/driving/';
 const NOMINATIM='https://nominatim.openstreetmap.org/search';
 const OVERPASS=['https://overpass-api.de/api/interpreter','https://overpass.kumi.systems/api/interpreter'];
+const CORRIDOR={bandKm:50,ttlDays:10,via:[
+  {name:'Alicante',lat:38.3452,lon:-0.4810},{name:'Perpignan',lat:42.6887,lon:2.8948},
+  {name:'Valence',lat:44.9334,lon:4.8924},{name:'Genève',lat:46.2044,lon:6.1432},{name:'Zurich',lat:47.3769,lon:8.5417}]};
 const RE=6371008.8, RAD=Math.PI/180, KM=RE*RAD;
 const OPP_LATERAL=45;      // metres to the left of the carriageway => other direction
 const SAMPLE_STEP=800;     // m between points of the Overpass search line
@@ -934,6 +944,7 @@ let trip=load(KEY_TRIP,null);   // persisted trip (route kept under its own key)
 if(trip)trip.route=load(KEY_ROUTE,null);
 let R=null;                      // runtime route {lat,lon,cum,n,total,legs}
 let fix=null, lastOdoFix=null, lastFixAt=0, routeIdx=0, along=0, offSince=0, rerouting=false, lastReroute=0;
+let db=load(KEY_DB,null), dbBuild={busy:false,step:0,of:0,msg:''};
 let restView=[];                 // projected rest areas on current route
 let loadGen=0, loadState={busy:false,err:null};
 let follow=true, wake=null, watchId=null, saveT=0;
@@ -1012,10 +1023,10 @@ async function routeOSRM(points,head){
   });
   return {c,legs};
 }
-async function overpass(q){
+async function overpass(q,ms=70000){
   let err;
   for(let a=0;a<4;a++){
-    try{return await getJSON(OVERPASS[a%OVERPASS.length],{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'data='+encodeURIComponent(q)},70000)}
+    try{return await getJSON(OVERPASS[a%OVERPASS.length],{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'data='+encodeURIComponent(q)},ms)}
     catch(e){err=e;await sleep(3000*(a+1))}
   }
   throw err;
@@ -1079,10 +1090,31 @@ function mergeRest(list){
   for(const r of list)byId.set(r.id,r);
   trip.rest=[...byId.values()];
 }
+const cellKey=(la,lo)=>Math.floor(la*100)+','+Math.floor(lo*100);
+function routeGrid(){
+  if(R.grid)return R.grid;
+  const g=new Map();
+  for(let i=0;i<R.n-1;i++){
+    const L=R.cum[i+1]-R.cum[i], steps=Math.max(1,Math.ceil(L/350));
+    for(let s=0;s<=steps;s++){const t=s/steps,k=cellKey(R.lat[i]+t*(R.lat[i+1]-R.lat[i]),R.lon[i]+t*(R.lon[i+1]-R.lon[i]));const e=g.get(k);if(!e)g.set(k,[i,i]);else{if(i<e[0])e[0]=i;if(i>e[1])e[1]=i}}
+  }
+  return R.grid=g;
+}
+// nearest route point for things within ~700 m of the route; null when far away
+function projectNear(la,lo){
+  const g=routeGrid(), a=Math.floor(la*100), b=Math.floor(lo*100); let mn=Infinity,mx=-1;
+  for(let x=-1;x<=1;x++)for(let y=-1;y<=1;y++){const e=g.get((a+x)+','+(b+y));if(e){if(e[0]<mn)mn=e[0];if(e[1]>mx)mx=e[1]}}
+  if(mx<0)return null;
+  return scan(la,lo,Math.max(0,mn-2),Math.min(R.n-1,mx+3));
+}
 function recomputeRest(){
   if(!R){restView=[];return}
-  const v=[];
-  for(const r of trip.rest){const p=project(r.lat,r.lon);if(p&&p.dist<700)v.push(Object.assign({},r,{fac:Object.assign({},r.fac),along:p.along,lateral:p.lateral}))}
+  const v=[], seen=new Set();
+  for(const r of [...trip.rest,...(db&&db.items||[])]){
+    if(seen.has(r.id))continue; seen.add(r.id);
+    const p=projectNear(r.lat,r.lon);
+    if(p&&p.dist<700)v.push(Object.assign({},r,{fac:Object.assign({},r.fac),along:p.along,lateral:p.lateral}))
+  }
   v.sort((a,b)=>a.along-b.along);
   // merge duplicates (node + area, or the two halves of one site on the same side)
   const out=[];
@@ -1102,6 +1134,7 @@ async function loadRest(){
   let from=Math.max(trip.restDone||0,along-2000,0);
   while(gen===loadGen&&from<R.total-50){
     const to=Math.min(R.total,from+(from<=Math.max(0,along-2000)+1?40000:CHUNK));
+    if(dbCovers(from,to)){trip.restDone=to;from=to;continue}
     try{
       const j=await overpass(restQuery(samplePts(from,to)));
       if(gen!==loadGen)return;
@@ -1118,6 +1151,75 @@ async function loadRest(){
   }
   if(gen===loadGen){loadState={busy:false,err:null};renderStatus()}
 }
+
+/* ---------- offline rest-area file ---------- */
+function dbAge(){return db?Date.now()-Date.parse(db.generated):Infinity}
+function dbExpired(){return !db||Date.now()>Date.parse(db.expires)}
+function nearCorridor(pts,la,lo,maxM){
+  const kx=Math.cos(la*RAD)*KM, m2=maxM*maxM;
+  for(const p of pts){const dy=(p[0]-la)*KM;if(dy*dy>m2)continue;const dx=(p[1]-lo)*kx;if(dx*dx+dy*dy<=m2)return true}
+  return false;
+}
+function dbCovers(a,b){
+  if(!db||!db.corridor)return false;
+  const lim=(db.bandKm-3)*1000;
+  for(let x=a;x<b+1;x+=2000){const p=pointAt(Math.min(x,b));if(!nearCorridor(db.corridor,p[0],p[1],lim))return false}
+  return true;
+}
+function segQuery(b){
+  return '[out:json][timeout:150][bbox:'+b.join(',')+'];'+
+    'nwr["highway"~"^(services|rest_area)$"]->.r;'+
+    '(nwr(around.r:400)["amenity"~"^(fuel|charging_station|restaurant|fast_food|cafe|toilets)$"];'+
+    'nwr(around.r:400)["shop"~"^(convenience|kiosk)$"];);'+
+    '.r out geom;out center;';
+}
+async function buildDB(){
+  if(dbBuild.busy)return;
+  dbBuild={busy:true,step:0,of:0,msg:'Calculating the corridor…'}; renderDB();
+  try{
+    const r=await routeOSRM(CORRIDOR.via,null), c=r.c, n=c.length/2, pts=[];
+    let pl=null,po=null;
+    for(let i=0;i<n;i++){const la=c[2*i],lo=c[2*i+1];if(pl===null||i===n-1||hav(pl,po,la,lo)>=2000){pts.push([+la.toFixed(4),+lo.toFixed(4)]);pl=la;po=lo}}
+    const band=CORRIDOR.bandKm*1000, segs=[];
+    for(let i=0;i<pts.length-1;i+=60)segs.push(pts.slice(i,Math.min(pts.length,i+61)));
+    const items=new Map();
+    for(let k=0;k<segs.length;k++){
+      dbBuild.step=k+1; dbBuild.of=segs.length; dbBuild.msg='Downloading part '+(k+1)+' of '+segs.length+'…'; renderDB(); renderStatus();
+      const sg=segs[k]; let s=90,w=180,nn=-90,e=-180;
+      for(const p of sg){s=Math.min(s,p[0]);nn=Math.max(nn,p[0]);w=Math.min(w,p[1]);e=Math.max(e,p[1])}
+      const dLa=CORRIDOR.bandKm/111.2, dLo=CORRIDOR.bandKm/(111.2*Math.cos(Math.max(Math.abs(s),Math.abs(nn))*RAD));
+      const j=await overpass(segQuery([(s-dLa).toFixed(3),(w-dLo).toFixed(3),(nn+dLa).toFixed(3),(e+dLo).toFixed(3)]),160000);
+      for(const it of parseRest(j))if(!items.has(it.id)&&nearCorridor(pts,it.lat,it.lon,band))items.set(it.id,it);
+      if(k<segs.length-1)await sleep(1500);
+    }
+    const now=Date.now();
+    const nd={v:1,generated:new Date(now).toISOString(),ttlDays:CORRIDOR.ttlDays,expires:new Date(now+CORRIDOR.ttlDays*864e5).toISOString(),
+      bandKm:CORRIDOR.bandKm,via:CORRIDOR.via.map(p=>p.name),source:'OpenStreetMap contributors (ODbL), via Overpass API',
+      count:items.size,corridor:pts,items:[...items.values()]};
+    if(!store(KEY_DB,nd))throw new Error('not enough storage space on this phone');
+    db=nd; dbBuild={busy:false,step:0,of:0,msg:''};
+    if(trip&&R){recomputeRest();render()}
+  }catch(e){
+    dbBuild={busy:false,step:0,of:0,msg:'Update failed ('+(/fetch|network|abort|Load failed|HTTP/i.test(String(e))?'no connection or server busy':(e.message||e))+')'+(db?'. Still using the data from '+fmtDate(db.generated)+'.':'. Will try again later.')};
+  }
+  renderDB(); renderStatus();
+}
+function fmtDate(iso){return new Date(iso).toLocaleString('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}
+function dbSummary(){
+  if(!db)return 'No offline rest-area data yet.';
+  const left=Date.parse(db.expires)-Date.now();
+  return db.count.toLocaleString('en-GB')+' rest areas, '+db.via[0]+' → '+db.via[db.via.length-1]+' ±'+db.bandKm+' km. Updated '+fmtDate(db.generated)+'. '+
+    (left>0?'Valid until '+new Date(db.expires).toLocaleDateString('en-GB',{day:'numeric',month:'short'})+'.':'Expired; it will update when online.');
+}
+function renderDB(){
+  const t=dbSummary()+(dbBuild.msg?' '+dbBuild.msg:'');
+  setTxt('dbInfo',t); setTxt('dbInfo2',t);
+  const sb=$('#sDbUpdate'); sb.disabled=dbBuild.busy; setTxt('sDbUpdate',dbBuild.busy?'Updating rest-area data… '+(dbBuild.of?dbBuild.step+'/'+dbBuild.of:''):'Update rest-area data now');
+  const b=$('#mDbUpdate'); if(b){b.disabled=dbBuild.busy;setTxt('mDbUpdate',dbBuild.busy?'Updating… '+(dbBuild.of?dbBuild.step+'/'+dbBuild.of:''):'Update rest-area data now')}
+}
+function checkDB(){if(dbExpired()&&!dbBuild.busy&&navigator.onLine!==false)buildDB()}
+setInterval(checkDB,36e5);
+window.addEventListener('online',checkDB);
 
 /* ---------- drawing ---------- */
 function drawRoute(){
@@ -1155,7 +1257,7 @@ function facHTML(r){
   if(f.shop)o.push('<span><svg><use href="#i-shop"/></svg>Shop</span>');
   if(f.wc)o.push('<span><svg><use href="#i-wc"/></svg>WC</span>');
   if(f.ev)o.push('<span><svg><use href="#i-ev"/></svg>EV</span>');
-  if(o.length===1&&!r.svc)o.push('<span><svg><use href="#i-p"/></svg>Parking</span>');
+  if(o.length===(r.name?1:0)&&!r.svc)o.push('<span><svg><use href="#i-p"/></svg>Parking</span>');
   if(r.opp)o.push('<span class="opp">other side</span>');
   return o.join('');
 }
@@ -1208,7 +1310,9 @@ function renderStatus(){
     if(loadState.err)s+=' · '+loadState.err;
     else if(loadState.busy)s+=' · rest areas '+Math.round((trip.restDone||0)/1000)+'/'+Math.round(R.total/1000)+' km';
     if(rerouting)s+=' · recalculating…';
+    if(dbBuild.busy)s+=' · updating rest-area data '+dbBuild.step+'/'+(dbBuild.of||'…');
   }
+  if(!trip&&dbBuild.busy)s+=' · updating rest-area data';
   if(!wake&&trip&&!('wakeLock' in navigator))s+=' · set Auto-Lock to Never';
   setTxt('status',s);
 }
@@ -1295,7 +1399,7 @@ async function keepAwake(){
   updWake();
 }
 function updWake(){setTxt('wakeTxt',wake?'Screen stays on while this is open':('wakeLock' in navigator?'Tap the screen once to keep it on':'Set Settings › Display › Auto-Lock to Never while driving'))}
-document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&trip){keepAwake();if(R&&!loadState.busy&&(trip.restDone||0)<R.total-50)loadRest()}});
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')checkDB();if(document.visibilityState==='visible'&&trip){keepAwake();if(R&&!loadState.busy&&(trip.restDone||0)<R.total-50)loadRest()}});
 window.addEventListener('pagehide',()=>save(true));
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')save(true)});
 document.addEventListener('pointerdown',()=>{if(trip&&!wake)keepAwake()},{passive:true});
@@ -1377,8 +1481,11 @@ $('#btnMenu').onclick=()=>{
   if(!trip)return openSetup();
   const names=[trip.start.name,...trip.dests.map(d=>d.name)].join(' → ');
   $('#menuTrip').textContent=names+(trip.startedAt?' · moving since '+new Date(trip.startedAt).toLocaleString('en-GB',{weekday:'short',hour:'2-digit',minute:'2-digit'}):' · clock starts when you move');
-  endArm=false; setTxt('mEnd','End trip and plan a new one'); syncSeg(); updWake(); $('#menu').hidden=false;
+  endArm=false; setTxt('mEnd','End trip and plan a new one'); setTxt('mDbCopy','Copy the data as JSON'); syncSeg(); updWake(); renderDB(); $('#menu').hidden=false;
 };
+$('#mDbUpdate').onclick=()=>buildDB();
+$('#sDbUpdate').onclick=()=>buildDB();
+$('#mDbCopy').onclick=async()=>{if(!db){setTxt('mDbCopy','No data yet');return}try{await navigator.clipboard.writeText(JSON.stringify(db));setTxt('mDbCopy','Copied ('+Math.round(JSON.stringify(db).length/1024)+' KB)')}catch(e){setTxt('mDbCopy','Copy not allowed here')}};
 $('#menuClose').onclick=()=>{$('#menu').hidden=true};
 $('#mOverview').onclick=()=>{$('#menu').hidden=true;overview()};
 $('#mReroute').onclick=()=>{$('#menu').hidden=true;lastReroute=0;if(fix)reroute();else setTxt('status','Need a GPS position first')};
@@ -1396,9 +1503,10 @@ $('#mEnd').onclick=()=>{
 };
 
 /* ---------- boot ---------- */
-updWake();
+updWake(); renderDB();
 if(trip&&trip.route&&trip.route.c&&trip.route.c.length>3){trip.rest=trip.rest||[];trip.base=trip.base||0;activate(true)}
 else{trip=null;openSetup();startGPS()}
+checkDB();
 }
 </script>
 </body>
